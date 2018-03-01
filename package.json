@@ -1,0 +1,34 @@
+{
+  "name": "cookbook",
+  "version": "1.0.0",
+  "description": "Save your recipes",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/my-cookbook/cookbook.git"
+  },
+  "author": "Natalie Ryder (natalie@natalieryder.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/my-cookbook/cookbook/issues"
+  },
+  "homepage": "https://github.com/my-cookbook/cookbook#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.2",
+    "sequelize": "^4.35.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.0.1",
+    "nightmare": "^2.10.0"
+  }
+}
