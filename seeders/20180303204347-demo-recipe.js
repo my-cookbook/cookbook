@@ -17,8 +17,9 @@ module.exports = {
         recipeTitle: 'A new recipe',
         recipeNote: 'regular person, yo',
         recipeSteps: '<ul><li>a step</li></ul>',
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        // UserId: 1,
+        // createdAt: new Date(),
+        // updatedAt: new Date(),
       }], {});
   },
 

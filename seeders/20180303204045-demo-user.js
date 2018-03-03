@@ -8,11 +8,11 @@ module.exports = {
 
       // Example:
       return queryInterface.bulkInsert('Users', [{
-        usernName: 'John Doe',
+        userName: 'John Doe',
         password: 'abcdefg',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        // permissionLevelId: 1
+        // createdAt: new Date(),
+        // updatedAt: new Date(),
+        permissionLevelId: 1
       }], {});
     
   },

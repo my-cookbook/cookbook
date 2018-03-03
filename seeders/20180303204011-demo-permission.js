@@ -14,8 +14,8 @@ module.exports = {
       return queryInterface.bulkInsert('permissionLevels', [{
         permissionType: 'User',
         permissionDescription: 'regular person, yo',
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        // createdAt: new Date(),
+        // updatedAt: new Date(),
       }], {});
     
   },
