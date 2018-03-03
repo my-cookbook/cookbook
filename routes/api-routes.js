@@ -22,7 +22,7 @@ router.post("/api/user", function(req, res) {
 
 	console.log('hello', req.body);
 
-	db.User.create({
+	db.Users.create({
 	  first_name: req.body.first_name,
 	  last_name: req.body.last_name,
 	  email: req.body.email,
