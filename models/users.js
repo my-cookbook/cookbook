@@ -3,13 +3,29 @@ module.exports = function (sequelize, DataTypes) {
 // sequelize (lowercase) references our connection to the DB.
 
 // Creates a "user" model that matches up with DB
-var users = sequelize.define("users", {
-    // the username Type gets saved as a string
-    userName: {
+var users = sequelize.define("Users", {
+    // the user's first name type gets saved as a string
+    first_name: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
             len: [1, 200]
+        }
+    },
+    // the user's last name type gets saved as a string
+    last_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            len: [1, 200]
+        }
+    },
+    // the email type gets saved as a string)
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            len: [1, 20]
         }
     },
     // the passwords type gets saved as a string)
@@ -20,7 +36,6 @@ var users = sequelize.define("users", {
             len: [1, 20]
         }
     },
-
 }
 , {
     timestamps: false
