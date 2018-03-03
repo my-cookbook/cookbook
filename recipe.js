@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
 
   Recipe.associate = function(models) {
 
-    Recipe.belongsTo(models.User, {
+    Recipe.belongsTo(models.Userdhdh, {
       foreignKey: {
         allowNull: false
       }
