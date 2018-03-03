@@ -23,7 +23,7 @@ var permissionLevel = sequelize.define("permissionLevel", {
     timestamps: false
 });
     permissionLevel.associate = function (models) {
-        permissionLevel.hasMany(models.users)
+        permissionLevel.hasMany(models.Users)
     }
     return permissionLevel
 };
