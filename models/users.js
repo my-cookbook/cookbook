@@ -21,13 +21,6 @@ var users = sequelize.define("users", {
         }
     },
     //the userID (unique ID)
-    UserID: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-            len: [1, 200]
-        }
-    },
     //user level/description (String)
     userLeve: {
         type: DataTypes.STRING,
@@ -40,7 +33,19 @@ var users = sequelize.define("users", {
 }
 , {
     timestamps: false
-});
+        });
+        
+        users.associate = function (models) {
+            users.belongsTo(models.permissionLevel,{
+                foreignKey: {
+                    allowNull: false
+                }
+            });
+        }
+
+    users.associate = function (models) {
+        users.hasMany(models.recepies)
+    }
     return users
 };
 // Syncs with DB

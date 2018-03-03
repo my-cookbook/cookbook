@@ -5,13 +5,6 @@ module.exports = function (sequelize, DataTypes) {
 // Creates a "permissionLevel" model that matches up with DB
 var recepies = sequelize.define("recepies", {
     //unique id for each recepies will save as int 
-    recepiesId: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            len: [1, 20]
-        }
-    },
     // the permission Type gets saved as a string
     recepiesTitle: {
         type: DataTypes.STRING,
@@ -40,6 +33,18 @@ var recepies = sequelize.define("recepies", {
 }, {
     timestamps: false
 });
+
+    recepies.associate = function (models) {
+        users.belongsTo(models.users, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    }
+
+    recepies.associate = function (models) {
+        recepies.hasMany(models.ingredient)
+    }
     return recepies
 };
 // Syncs with DB

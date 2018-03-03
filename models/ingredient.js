@@ -20,16 +20,16 @@ var ingredient = sequelize.define("ingredient", {
         }
     },
     // the permission Description  (a string)
-    recepiesId: {
-        type: DataTypes.STRING,
-        AllowNull: true,
-        Validate: {
-            len: [0, 200]
-        }
-    },
 }, {
     timestamps: false
 });
+    ingredient.associate = function (models) {
+        ingredient.belongsTo(models.recepies, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    }
 
     return ingredient
 };
