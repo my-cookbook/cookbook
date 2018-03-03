@@ -20,15 +20,6 @@ var users = sequelize.define("users", {
             len: [1, 20]
         }
     },
-    //the userID (unique ID)
-    //user level/description (String)
-    userLeve: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            len: [1, 200]
-        }
-    },
 
 }
 , {
@@ -44,7 +35,7 @@ var users = sequelize.define("users", {
         }
 
     users.associate = function (models) {
-        users.hasMany(models.recepies)
+        users.hasMany(models.recipe)
     }
     return users
 };

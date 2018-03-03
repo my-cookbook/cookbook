@@ -24,7 +24,7 @@ var ingredient = sequelize.define("ingredient", {
     timestamps: false
 });
     ingredient.associate = function (models) {
-        ingredient.belongsTo(models.recepies, {
+        ingredient.belongsTo(models.recipe, {
             foreignKey: {
                 allowNull: false
             }

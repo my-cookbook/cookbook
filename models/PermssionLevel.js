@@ -25,6 +25,7 @@ var permissionLevel = sequelize.define("permissionLevel", {
     permissionLevel.associate = function (models) {
         permissionLevel.hasMany(models.users)
     }
+
     return permissionLevel
 };
 // Syncs with DB
