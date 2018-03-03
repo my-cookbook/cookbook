@@ -1,22 +1,22 @@
 module.exports = {
   "development": {
-    "username": "root",
-
-    "database": "cookbook_db",
+    username: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DATABASE,
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": 1366,
+    "password": null,
     "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": 1366,
-    "database": "database_production",
+    username: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DATABASE,
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
