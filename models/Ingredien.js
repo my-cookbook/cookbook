@@ -1,20 +1,37 @@
 // Sequelize (capital) references the standard library
-var Sequelize = require("sequelize");
+module.exports = function (sequelize, DataTypes) {
 // sequelize (lowercase) references our connection to the DB.
-var sequelize = require("../config/connection.js");
 // Creates a "permissionLevel" model that matches up with DB
-var ingredient = sequelize.define("ingredian", {
+var ingredient = sequelize.define("ingredient", {
     //unique id for each recepies will save as int 
-    quantity: Sequelize.STRING,
+    quantity: {
+        type: DataTypes.STRING,
+        AllowNull: true,
+        Validate: {
+            len: [0, 200]
+        }
+    },
     // the permission Type gets saved as a string
-    measurement: Sequelize.STRING,
+    measurement: {
+        type: DataTypes.STRING,
+        AllowNull: true,
+        Validate: {
+            len: [0, 200]
+        }
+    },
     // the permission Description  (a string)
-    recepiesId: Sequelize.INTEGER,
-   
+    recepiesId: {
+        type: DataTypes.STRING,
+        AllowNull: true,
+        Validate: {
+            len: [0, 200]
+        }
+    },
 }, {
-        timestamps: false
-    });
+    timestamps: false
+});
+
+    return ingredient
+};
 // Syncs with DB
-ingredient.sync();
 // Makes the Character Model available for other files (will also create a table)
-module.exports = ingredient;

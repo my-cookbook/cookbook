@@ -1,22 +1,47 @@
 // Sequelize (capital) references the standard library
-var Sequelize = require("sequelize");
+module.exports = function (sequelize, DataTypes) {
 // sequelize (lowercase) references our connection to the DB.
-var sequelize = require("../config/connection.js");
+
 // Creates a "user" model that matches up with DB
 var users = sequelize.define("users", {
     // the username Type gets saved as a string
-    userName: Sequelize.STRING,
+    userName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            len: [1, 200]
+        }
+    },
     // the passwords type gets saved as a string)
-    password: Sequelize.INTEGER,
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            len: [1, 20]
+        }
+    },
     //the userID (unique ID)
-    UserID: Sequelize.INTEGER,
+    UserID: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+            len: [1, 200]
+        }
+    },
     //user level/description (String)
-    userLevel: Sequelize.STRING
-    
-}, {
-        timestamps: false
-    });
+    userLeve: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            len: [1, 200]
+        }
+    },
+
+}
+, {
+    timestamps: false
+});
+    return users
+};
 // Syncs with DB
-users.sync();
 // Makes the Character Model available for other files (will also create a table)
-module.exports = users;

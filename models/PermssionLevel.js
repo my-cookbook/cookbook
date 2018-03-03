@@ -1,18 +1,29 @@
 // Sequelize (capital) references the standard library
-var Sequelize = require("sequelize");
+module.exports = function (sequelize, DataTypes) {
 // sequelize (lowercase) references our connection to the DB.
-var sequelize = require("../config/connection.js");
 // Creates a "permissionLevel" model that matches up with DB
 var permissionLevel = sequelize.define("permissionLevel", {
     // the permission Type gets saved as a string
-    permisionType: Sequelize.STRING,
+    permissionType: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            len: [1, 250]
+        }
+    },
     // the permission Description  (a string)
-    permissionDescription: Sequelize.STRING,
-    
+    permissionDescription: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            len: [1, 250]
+        }
+    },
 }, {
-        timestamps: false
-    });
+    timestamps: false
+});
+    return permissionLevel
+};
 // Syncs with DB
-permissionLevel.sync();
+
 // Makes the Character Model available for other files (will also create a table)
-module.exports = permissionLevel;
