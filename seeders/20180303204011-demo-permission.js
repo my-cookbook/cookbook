@@ -11,12 +11,20 @@ module.exports = {
       //   name: 'John Doe',
       //   isBetaMember: false
       // }], {});
-      return queryInterface.bulkInsert('permissionLevels', [{
+      return queryInterface.bulkInsert('PermissionLevels', [
+      {
+        permissionType: 'Super Admin',
+        permissionDescription: 'The boss',
+      },
+      {
+        permissionType: 'Admin',
+        permissionDescription: 'Developer',
+      },
+      {
         permissionType: 'User',
         permissionDescription: 'regular person, yo',
-        // createdAt: new Date(),
-        // updatedAt: new Date(),
-      }], {});
+      }
+      ], {});
     
   },
 
@@ -26,7 +34,7 @@ module.exports = {
       Return a promise to correctly handle asynchronicity.
     */
 
-      return queryInterface.bulkDelete('permissionLevels', null, {});
+      return queryInterface.bulkDelete('PermissionLevels', null, {});
     
   }
 };

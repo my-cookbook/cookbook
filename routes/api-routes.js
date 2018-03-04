@@ -16,7 +16,7 @@ const router = express.Router();
 // POST route for checkingif a user exists. 
 router.post("/api/user/credentialcheck", function doesUserExist (req, res) {
 
-    return db.Users.count({
+    return db.User.count({
         where: {
             email: req.body.email,
             password: req.body.password
@@ -40,7 +40,7 @@ router.post("/api/user", function(req, res) {
 
 	console.log('hello', req.body);
 
-	db.Users.create({
+	db.User.create({
 	  first_name: req.body.first_name,
 	  last_name: req.body.last_name,
 	  email: req.body.email,
@@ -50,25 +50,6 @@ router.post("/api/user", function(req, res) {
 	});
 });
 
-//we can't get local storage access on the server
-//pass in the local variable from public scripts.js ajax call
-router.get("/:user/recipes", function (req, res) {
-    var user = req.params.user;
-    // here we'll use the user data to query the database for all the recipes owned by that user
-    var recipes = {};
-    var data = {};
-    // getting all recipes by the user, includeing all ingredients of that recipe
-    db.Recipe.findAll({
-        where: {
-            UserId: user,
-        },
-        include: [db.Ingredient]
-    }).then(function (data) {
-        res.json(data);
-    })
-    // save the data in an object and pass it into the handlebars template
-    // res.render("recipes", recipes);
-})
 router.get("/:user/recipes/:recipe", function (req, res) {
     var user = req.params.user;
     var recipe = req.params.recipe;
