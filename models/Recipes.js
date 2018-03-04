@@ -3,7 +3,7 @@ module.exports = function (sequelize, DataTypes) {
 // sequelize (lowercase) references our connection to the DB.
 
 // Creates a "permissionLevel" model that matches up with DB
-var recipe = sequelize.define("recipe", {
+var Recipe = sequelize.define("Recipe", {
     //unique id for each recipe will save as int 
     // the permission Type gets saved as a string
     recipeTitle: {
@@ -34,18 +34,18 @@ var recipe = sequelize.define("recipe", {
     timestamps: false
 });
 
-    recipe.associate = function (models) {
-        users.belongsTo(models.users, {
+    Recipe.associate = function (models) {
+        Recipe.belongsTo(models.User, {
             foreignKey: {
                 allowNull: false
             }
         });
     }
 
-    recipe.associate = function (models) {
-        recipe.hasMany(models.ingredient)
+    Recipe.associate = function (models) {
+        Recipe.hasMany(models.Ingredient)
     }
-    return recipe
+    return Recipe
 };
 // Syncs with DB
 

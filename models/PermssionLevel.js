@@ -2,7 +2,7 @@
 module.exports = function (sequelize, DataTypes) {
 // sequelize (lowercase) references our connection to the DB.
 // Creates a "permissionLevel" model that matches up with DB
-var permissionLevel = sequelize.define("permissionLevel", {
+var PermissionLevel = sequelize.define("PermissionLevel", {
     // the permission Type gets saved as a string
     permissionType: {
         type: DataTypes.STRING,
@@ -22,10 +22,12 @@ var permissionLevel = sequelize.define("permissionLevel", {
 }, {
     timestamps: false
 });
-    permissionLevel.associate = function (models) {
-        permissionLevel.hasMany(models.Users)
+
+    PermissionLevel.associate = function (models) {
+        PermissionLevel.hasMany(models.User)
+
     }
-    return permissionLevel
+    return PermissionLevel
 };
 // Syncs with DB
 
