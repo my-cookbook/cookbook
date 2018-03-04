@@ -1,3 +1,4 @@
+/* Login Page *************************/
 /*navbar*/
 #logo
 {
@@ -14,6 +15,7 @@
 	text-align: center;
 	padding-right: 110px;
 	font-family: cursive;
+	font-weight: bold;
 }
 /*main login contianer*/
 #input-size-username
@@ -44,14 +46,50 @@
 .carousel-image
 {
 	width: 100%;
-	height: 575px;
+	height: 590px;
 }
 /*footer*/
-#login-footer
+#footer
 {
 	background-color: #00001a;
 	padding-bottom: 20px;
 	padding-top: 20px;
 	text-align: center;
 	color: white;
+	position: absolute;
+  	right: 0;
+  	bottom: 0;
+  	left: 0;
+}
+
+/* DashBoard *************************/
+/* dashboard-body */
+#dashboard-body
+{
+	background-image: url("../img/dashboard.jpg");
+	background-size: 1400px auto;
+	background-position: center;
+
+}
+/* icon container */
+#icon-container
+{
+	padding-bottom: 20px;
+	padding-top: 20px;
+	opacity: .8;
+}
+.button-name
+{
+	color: black;
+	font-family: cursive;
+	font-weight: bold;
+}
+.button-img
+{
+	width: 100px;
+	height: auto;
+}
+#icon-box
+{
+	text-align: center;
 }
