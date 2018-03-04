@@ -13,6 +13,24 @@ const router = express.Router();
 // Routes
 // =============================================================
 
+// POST route for checkingif a user exists. 
+router.post("/api/user/credentialcheck", function doesUserExist (req, res) {
+
+    return db.User.count({
+        where: {
+            email: req.body.email,
+            password: req.body.password
+        }
+    }).then( function (count) {
+    console.log(count)
+    if (count != 1) {
+        res.json(false);
+    } else {
+        res.json(true);
+    };
+    });
+});
+
 // GET route for getting all of the todos
 router.get("/", function (req, res) {
     res.send("Welcome to the cookbook app");
@@ -22,7 +40,7 @@ router.post("/api/user", function(req, res) {
 
 	console.log('hello', req.body);
 
-	db.Users.create({
+	db.User.create({
 	  first_name: req.body.first_name,
 	  last_name: req.body.last_name,
 	  email: req.body.email,
