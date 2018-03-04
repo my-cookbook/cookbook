@@ -25,7 +25,7 @@ var users = sequelize.define("Users", {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            len: [1, 20]
+            len: [1, 100]
         }
     },
     // the passwords type gets saved as a string)
@@ -33,7 +33,7 @@ var users = sequelize.define("Users", {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            len: [1, 20]
+            len: [1, 50]
         }
     },
 }
