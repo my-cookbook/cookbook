@@ -3,7 +3,7 @@ module.exports = function (sequelize, DataTypes) {
 // sequelize (lowercase) references our connection to the DB.
 
 // Creates a "user" model that matches up with DB
-var users = sequelize.define("Users", {
+var User = sequelize.define("User", {
     // the user's first name type gets saved as a string
     first_name: {
         type: DataTypes.STRING,
@@ -36,23 +36,24 @@ var users = sequelize.define("Users", {
             len: [1, 20]
         }
     },
-}
-, {
+},
+{
     timestamps: false
-        });
+    });
         
-        users.associate = function (models) {
-            users.belongsTo(models.permissionLevel,{
-                foreignKey: {
-                    allowNull: false
-                }
-            });
-        }
-
-    users.associate = function (models) {
-        users.hasMany(models.recipe)
+    User.associate = function (models) {
+        User.belongsTo(models.PermissionLevel,{
+            foreignKey: {
+                allowNull: false
+            }
+        });
     }
-    return users
+
+    User.associate = function (models) {
+        User.hasMany(models.Recipe)
+    }
+
+    return User
 };
 // Syncs with DB
 // Makes the Character Model available for other files (will also create a table)

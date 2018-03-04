@@ -35,7 +35,9 @@ app.use(express.static("public"));
 // =============================================================
 
 const apiroutes = require("./routes/api-routes.js");
+const htmlroutes = require("./routes/html-routes.js");
 app.use(apiroutes);
+app.use(htmlroutes);
 
 
 
