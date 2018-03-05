@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<style>
+    input[type=text],
+    select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+    div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+</style>
+
+<body>
+
+    <h3>You can add your recepie here</h3>
+<div id="createNewRecipe" class="modal fade" role="dialog">
+    <div>
+        <form action="/New Recepies">
+
+            <label for="RecipeTitle">Recipe Title</label>
+            <input type="text" id="RecipeTitle" name="Recipe_Title" placeholder="">
+
+            <label for="RecipeDescription">Decription</label>
+            <input type="text" id="recepedescription" name="description" placeholder="">
+
+            <label for="Ingredient1">Ingredient 1</label>
+            <input type="text" id="Ingredient1" name="Ingredient">
+            <input type="text" id ="measurement1" name="measurement1">
+            <input type="text" id="quantity1" name="quantity1">
+
+            <label for="Ingredient2">Ingredient 2</label>
+            <input type="text" id="Ingredient2" name="Ingredient">
+            <input type="text" id="measurement2" name="measurement">
+            <input type="text" id="quantity2" name="quantity2">
+
+            <label for="Ingredient3">Ingredient 3</label>
+            <input type="text" id="Ingredient3" name="Ingredient">
+            <input type="text" id="measurement3" name="measurement">
+            <input type="text" id="quantity3" name="quantity3">
+
+            <label for="Instruction">Instruction</label>
+            <input type="text" id="Instruction" name="Instruction">
+            
+            <label for="Notes">Notes</label>
+            <input type="text" id="Notes" name="Notes">
+            
+        <div>
+        <br>
+            <form action="upload Photo" method="post" enctype="multipart/form-data">
+                Select image to upload:
+                <input type="file" name="fileToUpload" id="fileToUpload">
+            </form>
+      </div>
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <button type="reset" class="btn btn-default">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+
+        </form>
+    </div>
+</div>
+<script type="text/javascript" src="./assets/js/scripts.js"></script>
+</body>
+
+</html>
