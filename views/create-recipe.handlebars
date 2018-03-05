@@ -1,0 +1,79 @@
+<body id="create-recpie-body">
+    <!-- navbar -->
+	<nav class="navbar navbar-dark" id="nav-bar">
+        <img src="./assets/img/logo.png" alt="CookApp-Logo" id="logo">
+        <h1 id="nav-title">My CookBook</h1>
+        <button type="button" class="btn btn-outline-primary">SignOut</button>
+    </nav>
+
+    <!-- recipe form -->
+    <div class="jumbotron" id="create-recipe-container">
+        <form>
+            <fieldset>
+                <legend>Creat Your Recipe</legend>
+                <div class="form-group">
+                    <label for="Recipe Title">Recipie Title</label>
+                    <input type="text" class="form-control" placeholder="Enter Recipie Title">
+                </div>
+                <div class="form-group">
+                    <label for="Decription">Recipe Description</label>
+                    <input type="text" class="form-control" placeholder="Enter Recipe Description (One Sentence)">
+                </div>
+                <div class="form-group">
+                        <label for="Decription">Recipe Description</label>
+                        <input type="text" class="form-control" placeholder="Enter Recipe Description (One Sentence)">
+                </div>
+                <!-- ingredients -->
+                <div class="ingredient row">
+                    <div class="col-sm-8">
+                        <label for="Ingredient">Ingredient</label>
+                        <input type="text" class="form-control" placeholder="Enter Ingredient Name">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="Units">Unit</label>
+                        <select class="form-control">
+                            <option><--select one--></option>
+                            <option>tsp</option>
+                            <option>tbs</option>
+                            <option>c</option>
+                            <option>pt</option>
+                            <option>mL</option>
+                            <option>L</option>
+                            <option>qt</option>
+                            <option>dash</option>
+                            <option>drop</option>
+                            <option>oz</option>
+                            <option>lbs</option>
+                            <option>gal</option>
+                        </select>
+                    </div> 
+                </div>
+                <!-- procedure or protocol -->
+                <div class="form-group">
+                    <label for="Procedure">Procedure</label>
+                    <textarea class="form-control" rows="3" placeholder="Enter Protocol"></textarea>
+                </div>
+                <div class="form-group">
+                        <label for="Notes">Notes</label>
+                        <textarea class="form-control" rows="3" placeholder="Enter Notes"></textarea>
+                </div>
+                <form action="upload Photo" method="post" enctype="multipart/form-data">
+                    Select image to upload:
+                    <input type="file" name="fileToUpload" id="fileToUpload">
+                </form>
+                <input type="submit" value="Submit">
+            </fieldset>
+        </form>
+    </div>
+
+    <!--Footer-->
+     <footer class="page-footer blue center-on-small-only" id="footer">
+        <!--Copyright-->
+        <div class="footer-copyright">
+            <div class="container-fluid">
+                © 2018 Copyright: <a href="(.....)">By Brian, Katy, Natalie, Sheila</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
