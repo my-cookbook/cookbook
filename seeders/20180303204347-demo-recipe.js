@@ -13,13 +13,29 @@ module.exports = {
       }], {});
     */
 
-      return queryInterface.bulkInsert('recipes', [{
-        recipeTitle: 'A new recipe',
-        recipeNote: 'regular person, yo',
-        recipeSteps: '<ul><li>a step</li></ul>',
-        // UserId: 1,
-        // createdAt: new Date(),
-        // updatedAt: new Date(),
+      return queryInterface.bulkInsert('Recipes', [{
+        recipeTitle: 'Steak',
+        recipeNote: 'mmm, steak',
+        recipeSteps: '<ul><li>cook the steak</li></ul>',
+        UserId: 1,
+      },
+      {
+        recipeTitle: 'Salad',
+        recipeNote: 'eat your veggies',
+        recipeSteps: '<ul><li>Chop the veggies</li><li>Put them in a bowl</li></ul>',
+        UserId: 1,
+      },
+      {
+        recipeTitle: 'Cereal',
+        recipeNote: 'lucky charms is the best',
+        recipeSteps: '<ul><li>Put the cereal in a bowl</li><li>pour milk on it</li></ul>',
+        UserId: 4,
+      },
+      {
+        recipeTitle: 'scrambled eggs',
+        recipeNote: '',
+        recipeSteps: '<ul><li>You know how to cook eggs, man.</li></ul>',
+        UserId: 2,
       }], {});
   },
 
@@ -31,6 +47,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('Person', null, {});
     */
-    return queryInterface.bulkDelete('recipes', null, {});
+    return queryInterface.bulkDelete('Recipes', null, {});
   }
 };

@@ -27,16 +27,16 @@
             <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#createAccountModal">Create Account</button> 
           </li>
           <li class="nav-item">
-            <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#logInForm">Log In</button> 
+            <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#logInModal">Log In</button> 
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  <div id="logInForm" class="modal fade" role="dialog">
+  <div id="logInModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
-        <form class="form-horizontal">
+        <form class="form-horizontal" id="logInForm">
           <fieldset>
             <legend>Log In</legend>
             <div class="form-group">
@@ -93,12 +93,12 @@
                 <input type="password" class="form-control" id="inputPassword" placeholder="password">
               </div>
             </div>
-            <div class="form-group">
+<!--             <div class="form-group">
               <label for="inputConfirmPassword" class="col-lg-2 control-label">Confirm Password</label>
               <div class="col-lg-10">
                 <input type="password" class="form-control" id="inputConfirmPassword" placeholder="confirm password">
               </div>
-            </div>
+            </div> -->
             <div class="form-group">
               <div class="col-lg-10 col-lg-offset-2">
                 <button type="reset" class="btn btn-default">Cancel</button>

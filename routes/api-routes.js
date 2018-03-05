@@ -13,6 +13,24 @@ const router = express.Router();
 // Routes
 // =============================================================
 
+// POST route for checkingif a user exists. 
+router.post("/api/user/credentialcheck", function doesUserExist (req, res) {
+
+    return db.User.count({
+        where: {
+            email: req.body.email,
+            password: req.body.password
+        }
+    }).then( function (count) {
+    console.log(count)
+    if (count != 1) {
+        res.json(false);
+    } else {
+        res.json(true);
+    };
+    });
+});
+
 // GET route for getting all of the todos
 router.get("/", function (req, res) {
     res.send("Welcome to the cookbook app");
@@ -32,25 +50,6 @@ router.post("/api/user", function(req, res) {
 	});
 });
 
-//we can't get local storage access on the server
-//pass in the local variable from public scripts.js ajax call
-router.get("/:user/recipes", function (req, res) {
-    var user = req.params.user;
-    // here we'll use the user data to query the database for all the recipes owned by that user
-    var recipes = {};
-    var data = {};
-    // getting all recipes by the user, includeing all ingredients of that recipe
-    db.Recipe.findAll({
-        where: {
-            UserId: user,
-        },
-        include: [db.Ingredient]
-    }).then(function (data) {
-        res.json(data);
-    })
-    // save the data in an object and pass it into the handlebars template
-    // res.render("recipes", recipes);
-})
 router.get("/:user/recipes/:recipe", function (req, res) {
     var user = req.params.user;
     var recipe = req.params.recipe;
@@ -77,8 +76,8 @@ router.post("/api/recipes/", function (req, res) {
         id: recipe.title,
         recepiesTitle: recipe.body,
         recepiesNote: recipe.UserId,
-        recepiesSteps: ,
-        userId: 
+        recepiesSteps:"" ,
+        userId: "",
     }).then(function (data) {
         // with the created recipe id, add ingredients
 

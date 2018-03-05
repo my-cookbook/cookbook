@@ -2,7 +2,7 @@
 module.exports = function (sequelize, DataTypes) {
 // sequelize (lowercase) references our connection to the DB.
 // Creates a "permissionLevel" model that matches up with DB
-var ingredient = sequelize.define("ingredient", {
+var Ingredient = sequelize.define("Ingredient", {
     //unique id for each recepies will save as int 
     quantity: {
         type: DataTypes.STRING,
@@ -19,19 +19,24 @@ var ingredient = sequelize.define("ingredient", {
             len: [0, 200]
         }
     },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+
+    }
     // the permission Description  (a string)
 }, {
     timestamps: false
 });
-    ingredient.associate = function (models) {
-        ingredient.belongsTo(models.recipe, {
+    Ingredient.associate = function (models) {
+        Ingredient.belongsTo(models.Recipe, {
             foreignKey: {
                 allowNull: false
             }
         });
     }
 
-    return ingredient
+    return Ingredient
 };
 // Syncs with DB
 // Makes the Character Model available for other files (will also create a table)

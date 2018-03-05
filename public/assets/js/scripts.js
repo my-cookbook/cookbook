@@ -93,3 +93,32 @@ $(document).ready(function () {
   }
 
 });
+  };
+
+  // Getting a reference to the input field where user logs in
+  var existingUserEmail = $("input#userEmail");
+  var existingUserPassword = $("input#userPassword");  
+
+  // Adding event listeners for logging in as a user
+  $(document).on("submit", "#logInForm", checkForUser);
+
+  function checkForUser(event) {
+  	event.preventDefault();
+  	var userCredentials = {
+  	  email: existingUserEmail.val().trim(),
+  	  password: existingUserPassword.val().trim(), 
+  	};
+  	
+  	// if the user's registered redirect to user dashboard page
+  	$.post("/api/user/credentialcheck", userCredentials).then(function (doesUserExist) {
+  		console.log(doesUserExist);
+  		// still need to add code that redirects user to the user dashboard page
+  	})
+  	existingUserEmail.val("");
+  	existingUserPassword.val("");
+  };
+
+});
+
+
+
