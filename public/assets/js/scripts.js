@@ -32,13 +32,15 @@ $(document).ready(function() {
   var existingUserPassword = $("input#userPassword");  
 
   // Adding event listeners for logging in as a user
-  $(document).on("submit", "#logInForm", checkForUser);
+  $(document).on("click", "#loginButton", checkForUser);
 
   function checkForUser(event) {
+
   	event.preventDefault();
+
   	var userCredentials = {
   	  email: existingUserEmail.val().trim(),
-  	  password: existingUserPassword.val().trim(), 
+  	  password: existingUserPassword.val().trim(),
   	};
   	
   	// if the user's registered redirect to user dashboard page

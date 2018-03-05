@@ -15,7 +15,7 @@ const router = express.Router();
 
 // GET route for getting all of the todos
 router.get("/", function (req, res) {
-    res.send("Welcome to the cookbook app");
+    res.render("login");
 });
 
 //we can't get local storage access on the server

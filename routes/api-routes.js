@@ -32,9 +32,6 @@ router.post("/api/user/credentialcheck", function doesUserExist (req, res) {
 });
 
 // GET route for getting all of the todos
-router.get("/", function (req, res) {
-    res.send("Welcome to the cookbook app");
-});
 
 router.post("/api/user", function(req, res) {
 
@@ -44,7 +41,9 @@ router.post("/api/user", function(req, res) {
 	  first_name: req.body.first_name,
 	  last_name: req.body.last_name,
 	  email: req.body.email,
-	  password: req.body.password
+	  password: req.body.password,
+	  // everyone is a regular user for now
+	  PermissionLevelId: 3,
 	}).then(function() {
 	  res.end();
 	});
