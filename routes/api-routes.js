@@ -70,30 +70,15 @@ router.post("/api/recipes/", function (req, res) {
 
     var UserId = 1;
 
-    var recipe = {
-        title: "A hardcoded recipe",
-        body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, debitis.",
-        ingredients: [{
-                title: "ingredient 1",
-                body: "Lorem ipsum dolor sit amet."
-            },
-            {
-                title: "ingredient 2",
-                body: "Lorem ipsum dolor sit amet."
-            },
-            {
-                title: "ingredient 2",
-                body: "Lorem ipsum dolor sit amet."
-            }
-        ],
-        UserId
-    }
-
+    var recipe = req.body;
+    recipe.UserId = UserId
     // create a recipe
     db.Recipe.create({
-        title: recipe.title,
-        body: recipe.body,
-        UserId: recipe.UserId
+        id: recipe.title,
+        recepiesTitle: recipe.body,
+        recepiesNote: recipe.UserId,
+        recepiesSteps: ,
+        userId: 
     }).then(function (data) {
         // with the created recipe id, add ingredients
 
