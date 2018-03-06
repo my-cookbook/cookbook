@@ -32,9 +32,6 @@ router.post("/api/user/credentialcheck", function doesUserExist (req, res) {
 });
 
 // GET route for getting all of the todos
-router.get("/", function (req, res) {
-    res.send("Welcome to the cookbook app");
-});
 
 router.post("/api/user", function(req, res) {
 
@@ -44,7 +41,9 @@ router.post("/api/user", function(req, res) {
 	  first_name: req.body.first_name,
 	  last_name: req.body.last_name,
 	  email: req.body.email,
-	  password: req.body.password
+	  password: req.body.password,
+	  // everyone is a regular user for now
+	  PermissionLevelId: 3,
 	}).then(function() {
 	  res.end();
 	});
@@ -69,30 +68,15 @@ router.post("/api/recipes/", function (req, res) {
 
     var UserId = 1;
 
-    var recipe = {
-        title: "A hardcoded recipe",
-        body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, debitis.",
-        ingredients: [{
-                title: "ingredient 1",
-                body: "Lorem ipsum dolor sit amet."
-            },
-            {
-                title: "ingredient 2",
-                body: "Lorem ipsum dolor sit amet."
-            },
-            {
-                title: "ingredient 2",
-                body: "Lorem ipsum dolor sit amet."
-            }
-        ],
-        UserId
-    }
-
+    var recipe = req.body;
+    recipe.UserId = UserId
     // create a recipe
     db.Recipe.create({
-        title: recipe.title,
-        body: recipe.body,
-        UserId: recipe.UserId
+        id: recipe.title,
+        recipeTitle: req.body.NewRecepieTitl,
+        rrecipeNote: req.body.RecipeDescription,
+        recipeSteps: req.body.Instruction ,
+        UserId: req.body.id,
     }).then(function (data) {
         // with the created recipe id, add ingredients
 
