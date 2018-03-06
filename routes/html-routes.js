@@ -15,9 +15,15 @@ const router = express.Router();
 
 // GET route for getting all of the todos
 router.get("/", function (req, res) {
-    res.render("login");
+    //check if logged in
+    //if logged in
+    res.render("dashboard");
+    //if not logged in
+    // res.render("login");
 });
-
+router.get("/create-recipe", function(req, res) {
+    res.render("create-recipe");
+})
 //we can't get local storage access on the server
 //pass in the local variable from public scripts.js ajax call
 router.get("/:user/recipes", function (req, res) {
@@ -32,10 +38,11 @@ router.get("/:user/recipes", function (req, res) {
         },
         include: [db.Ingredient]
     }).then(function (data) {
-        res.json(data);
+        // res.json(data);
+         res.render("recipes", {recipes: data});
     })
     // save the data in an object and pass it into the handlebars template
-    // res.render("recipes", recipes);
+    // res.render("recipes", {recipes: recipes});
 })
 router.get("/:user/recipes/:recipe", function (req, res) {
     var user = req.params.user;
