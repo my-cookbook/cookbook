@@ -14,22 +14,73 @@
 				<!-- username input -->
 				<div class="input-group input-group-sm mb-3">
 					<div class="input-group-prepend">
-						<span class="input-group-text" id="inputGroup-sizing-sm">Username</span>
+						<span class="input-group-text" id="inputGroup-sizing-sm">User Email</span>
 					</div>
-					<input type="text" class="form-control login-input" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Enter Email">
+					<input id="userEmail" type="text" class="form-control login-input" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Enter Email">
 				</div>
 				<!-- password input -->
 				<div class="input-group input-group-sm mb-3" >
 					<div class="input-group-prepend">
-						<span class="input-group-text" id="inputGroup-sizing-sm">Pasword</span>
+						<span class="input-group-text" id="inputGroup-sizing-sm">Password</span>
 					</div>
-					<input type="password" class="form-control login-input" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Enter Password">
+					<input id="userPassword" type="password" class="form-control login-input" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Enter Password">
 				</div>
-				<button type="button" class="btn btn-outline-primary">Login</button>
-				<button type="button" class="btn btn-outline-primary">Register</button>
+				<button type="button" id="loginButton" class="btn btn-outline-primary">Login</button>
+				<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#createAccountModal">Register</button>
+
 			</div>
 		</div>
 	</main>
+
+	<div id="createAccountModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form class="form-horizontal" id="createAccountForm">
+          <fieldset>
+            <legend>Create an Account</legend>
+            <div class="form-group">
+              <label for="inputFirstName" class="col-lg-2 control-label">First Name</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputFirstName" placeholder="first name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputLastName" class="col-lg-2 control-label">Last Name</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputLastName" placeholder="last name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputEmail" placeholder="email">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+              <div class="col-lg-10">
+                <input type="password" class="form-control" id="inputPassword" placeholder="password">
+              </div>
+            </div>
+<!--             <div class="form-group">
+              <label for="inputConfirmPassword" class="col-lg-2 control-label">Confirm Password</label>
+              <div class="col-lg-10">
+                <input type="password" class="form-control" id="inputConfirmPassword" placeholder="confirm password">
+              </div>
+            </div> -->
+            <div class="form-group">
+              <div class="col-lg-10 col-lg-offset-2">
+                <button type="reset" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>  
+
+
 
 	<!-- carousel image show -->
 	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
