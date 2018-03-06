@@ -74,10 +74,10 @@ router.post("/api/recipes/", function (req, res) {
     // create a recipe
     db.Recipe.create({
         id: recipe.title,
-        recepiesTitle: recipe.body,
-        recepiesNote: recipe.UserId,
-        recepiesSteps:"" ,
-        userId: "",
+        recipeTitle: req.body.NewRecepieTitl,
+        rrecipeNote: req.body.RecipeDescription,
+        recipeSteps: req.body.Instruction ,
+        UserId: req.body.id,
     }).then(function (data) {
         // with the created recipe id, add ingredients
 
