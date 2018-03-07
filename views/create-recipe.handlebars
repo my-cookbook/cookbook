@@ -8,7 +8,7 @@
 
     <!-- recipe form -->
     <div class="jumbotron" id="create-recipe-container">
-        <form>
+        <form id="createNewRecipe">
             <fieldset>
                 <legend>Creat Your Recipe</legend>
                 <div class="form-group">
@@ -107,16 +107,16 @@
                 <!-- procedure or protocol -->
                 <div class="form-group">
                     <label for="Procedure">Procedure</label>
-                    <textarea class="form-control" id="Instruction" rows="3" placeholder="Enter Protocol"></textarea>
+                    <textarea class="form-control" id="Procedure" rows="3" placeholder="Enter Protocol"></textarea>
                 </div>
                 <div class="form-group">
                         <label for="Notes">Notes</label>
                         <textarea class="form-control" id="Notes" rows="3" placeholder="Enter Notes"></textarea>
                 </div>
-                <form action="upload Photo" method="post" enctype="multipart/form-data">
-                    Select image to upload:
-                    <input type="file" name="fileToUpload" id="fileToUpload">
-                </form>
+               {{!-- <form action="upload Photo" method="post" enctype="multipart/form-data"> --}}
+                    {{!-- Select image to upload: --}}
+                    {{!-- <input type="file" name="fileToUpload" id="fileToUpload"> --}}
+                {{!-- </form> --}}
                 <input type="submit" value="Submit">
             </fieldset>
         </form>
