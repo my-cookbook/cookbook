@@ -1,0 +1,21 @@
+<section>
+	<div class="row">
+
+		{{#each recipes}}
+		<div class="col-12 col-md-4">
+			<a href="my-recipe" class="card b-block">
+				<img class="card-img-top" src="https://images.unsplash.com/photo-1433208406127-d9e1a0a1f1aa?ixlib=rb-0.3.5&s=ea6060d838057a06b87dc42508ed90d3&auto=format&fit=crop&w=966&q=80" alt="Card image cap">
+				
+				<div class="card-block">
+				    <h4 class="card-title">{{recipeTitle}}</h4>
+				    <p class="card-text">time to make</p>
+				    <p>Serving size</p>
+				</div>
+			</a>
+		</div>
+		{{/each}}
+		
+	</div>
+</section>
+
+
