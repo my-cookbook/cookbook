@@ -98,7 +98,9 @@ $(document).ready(function () {
 
       console.log(newRecipe);
 
-      $.post("/api/recipes/", newRecipe);
+      $.post("/api/recipes/", newRecipe).then(function(data) {
+        console.log(data);
+      })
       NewRecepieTitle.val("");
       RecipeDescription.val("");
       Ingredient1.val("");
@@ -112,6 +114,7 @@ $(document).ready(function () {
       quantity3.val("");
       Instruction.val("");
       Notes.val("");
-  }
+  };
+
 
 });

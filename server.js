@@ -8,6 +8,7 @@ require('dotenv').config()
 var express = require("express");
 var bodyParser = require("body-parser");
 var db = require("./models");
+var fileUpload = require("express-fileupload");
 
 // Sets up the Express App
 // =============================================================
@@ -27,6 +28,8 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+//file upload
+app.use(fileUpload());
 
 // Static directory
 app.use(express.static("public"));

@@ -7,6 +7,7 @@
 const db = require("../models");
 const express = require('express');
 const router = express.Router();
+const path = require("path");
 
 //use express router?
 
@@ -32,6 +33,26 @@ router.post("/api/user/credentialcheck", function doesUserExist (req, res) {
 });
 
 // GET route for getting all of the todos
+
+router.post("/uploadimage", function(req,res) {
+    console.log(req.files);
+
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
+     
+      // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+      let sampleFile = req.files.fileToUpload;
+     
+      // Use the mv() method to place the file somewhere on your server
+      var pathname = path.join(__dirname,'../public', 'filename.jpg');
+      console.log(pathname);
+      sampleFile.mv(pathname, function(err) {
+        if (err)
+          return res.status(500).send(err);
+     
+        // res.send('File uploaded!');
+      });
+});
 
 router.post("/api/user", function(req, res) {
 
