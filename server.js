@@ -21,12 +21,25 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
+//set up handlebars
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+
 // Static directory
 app.use(express.static("public"));
 
 // Routes
 // =============================================================
-require("./routes/api-routes.js")(app);
+
+const apiroutes = require("./routes/api-routes.js");
+const htmlroutes = require("./routes/html-routes.js");
+app.use(apiroutes);
+app.use(htmlroutes);
+
+
 
 // Starting our Express app
 // =============================================================
