@@ -8,8 +8,6 @@
 
     <!-- recipe form -->
     <div class="jumbotron" id="create-recipe-container">
-        <form id="createNewRecipe">
-            <fieldset>
                 <legend>Creat Your Recipe</legend>
                 <div class="form-group">
                     <label for="Recipe Title">Recipie Title</label>
@@ -109,20 +107,21 @@
                     <label for="Procedure">Procedure</label>
                     <textarea class="form-control" id="Instruction" rows="3" placeholder="Enter Protocol"></textarea>
                 </div>
+                <form id="uploadForm">
+                    Select image to upload:
+                    <input type="file" name="recipeimage" id="uploadImageInput" accept=".jpg,.jpeg,.png">
+                    <button class="btn btn-lg upload-btn" type="button">Upload File</button>
+                </form>
+                <p id="imagepath"></p>
+                <p class="imageerror"></p>
                 <div class="form-group">
                         <label for="Notes">Notes</label>
+                        
                         <textarea class="form-control" id="Notes" rows="3" placeholder="Enter Notes"></textarea>
                 </div>
 
-                <input type="submit" value="Submit">
-            </fieldset>
-        </form>
+                <button id="recipeFormSumbit">Add Recipe</button>
 
-        <form id="myform" action="/uploadimage" method="post" enctype="multipart/form-data">
-            Select image to upload:
-            <input type="file" name="fileToUpload" id="fileToUpload">
-            <input type="submit" value="Submit">
-        </form>
     </div>
 
     <!--Footer-->

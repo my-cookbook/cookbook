@@ -8,6 +8,9 @@ const db = require("../models");
 const express = require('express');
 const router = express.Router();
 const path = require("path");
+const uuidv4 = require('uuid/v4');
+
+// var formidable = require('formidable');
 
 //use express router?
 
@@ -32,25 +35,36 @@ router.post("/api/user/credentialcheck", function doesUserExist (req, res) {
     });
 });
 
-// GET route for getting all of the todos
 
 router.post("/uploadimage", function(req,res) {
-    console.log(req.files);
+
+    var mimetype = req.files.recipeimage.mimetype;
+    var ext;
+
+    // check if the mimetype is allowed and set the ext
+    if (mimetype === "image/jpeg") {
+        ext = ".jpg";
+    } else if (mimetype === "image/png") {
+        ext = ".png";
+    } else {
+        return res.status(415).send(err);
+    }
 
     if (!req.files)
         return res.status(400).send('No files were uploaded.');
      
       // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-      let sampleFile = req.files.fileToUpload;
-     
+    let sampleFile = req.files.recipeimage;
+    var filename = uuidv4();
       // Use the mv() method to place the file somewhere on your server
-      var pathname = path.join(__dirname,'../public', 'filename.jpg');
+
+      var pathname = path.join(__dirname,'../public/images', filename + ext);
       console.log(pathname);
       sampleFile.mv(pathname, function(err) {
         if (err)
           return res.status(500).send(err);
      
-        // res.send('File uploaded!');
+        res.json(pathname);
       });
 });
 
@@ -93,20 +107,22 @@ router.post("/api/recipes/", function (req, res) {
     recipe.UserId = UserId
     // create a recipe
     db.Recipe.create({
-        id: recipe.title,
-        recipeTitle: req.body.NewRecepieTitl,
-        rrecipeNote: req.body.RecipeDescription,
-        recipeSteps: req.body.Instruction ,
-        UserId: req.body.id,
+        recipeTitle: recipe.NewRecipeTitle,
+        rrecipeNote: recipe.RecipeDescription,
+        recipeSteps: recipe.Instruction,
+        recipeNote: recipe.Notes,
+        UserId: UserId,
     }).then(function (data) {
         // with the created recipe id, add ingredients
+        res.json(recipe.Ingredients);
 
         // we will pass data into req.body from the scripts.js
         //loop the ingredients variable to add all the ingredients
-        for (var i = 0; i < recipe.ingredients.length; i++) {
+        for (var i = 0; i < recipe.Ingredients.length; i++) {
             db.Ingredient.create({
-                title: recipe.ingredients[i].title,
-                body: recipe.ingredients[i].body,
+                name: recipe.Ingredients[i].name,
+                measurement: recipe.Ingredients[i].measurement,
+                quantity: recipe.Ingredients[i].quantity,
                 RecipeId: data.id
             }).then(function (data) {
                 // can only send one response, but can't compile each result as these happen asynchronously

@@ -17,9 +17,9 @@ const router = express.Router();
 router.get("/", function (req, res) {
     //check if logged in
     //if logged in
-    res.render("dashboard");
+    // res.render("dashboard");
     //if not logged in
-    // res.render("login");
+    res.render("login");
 });
 router.get("/create-recipe", function(req, res) {
     res.render("create-recipe");

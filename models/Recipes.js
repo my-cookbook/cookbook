@@ -18,7 +18,7 @@ var Recipe = sequelize.define("Recipe", {
         type: DataTypes.STRING,
         allowNull: true,
         validate: {
-            len: [1, 200]
+            len: [0, 200]
         }
     },
     //
@@ -26,9 +26,12 @@ var Recipe = sequelize.define("Recipe", {
         type: DataTypes.STRING,
         allowNull: true,
         validate: {
-            len: [1, 200]
+            len: [0, 200]
         }
     },
+    recipeImage: {
+        type: DataTypes.STRING,
+    }
 
 }, {
     timestamps: false
