@@ -1,4 +1,7 @@
 $(document).ready(function () {
+
+
+  $("#errorMessageModal").modal("hide");
   // Getting a reference to the input field where user creates a new account
   var newFirstNameInput = $("input#inputFirstName");
   var newLastNameInput = $("input#inputLastName");
@@ -40,7 +43,7 @@ $(document).ready(function () {
       newLastNameInput.val("");
       newEmailInput.val("");
       newPasswordInput.val("");
-  }
+  };
 
   // Getting a reference to the input field where user logs in
   var existingUserEmail = $("input#userEmail");
@@ -59,9 +62,15 @@ $(document).ready(function () {
       };
 
       // if the user's registered redirect to user dashboard page
-      $.post("/api/user/credentialcheck", userCredentials).then(function (doesUserExist) {
-          console.log(doesUserExist);
-          // still need to add code that redirects user to the user dashboard page
+      $.post("/api/user/credentialcheck", userCredentials)
+      .then(function(response) {
+        console.log(response);
+
+        if (response.success) {
+          window.location.href = '/dashboard'
+        } else {
+          $("#errorMessageModal").modal("show");
+        }
       })
       existingUserEmail.val("");
       existingUserPassword.val("");

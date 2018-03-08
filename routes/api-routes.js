@@ -14,20 +14,19 @@ const router = express.Router();
 // =============================================================
 
 // POST route for checkingif a user exists. 
-router.post("/api/user/credentialcheck", function doesUserExist (req, res) {
-
-    return db.User.count({
+router.post("/api/user/credentialcheck", function (req, res) {
+    db.User.findOne({
         where: {
             email: req.body.email,
             password: req.body.password
         }
-    }).then( function (count) {
-    console.log(count)
-    if (count != 1) {
-        res.json(false);
-    } else {
-        res.json(true);
-    };
+    }).then(function (data) {
+        if (data) {
+            req.session.userId = data.dataValues.id;
+            res.json({ success: true })
+        } else {
+            res.json({ success: false })
+        };
     });
 });
 

@@ -7,12 +7,19 @@
 require('dotenv').config()
 var express = require("express");
 var bodyParser = require("body-parser");
+var session = require('express-session');
 var db = require("./models");
 
 // Sets up the Express App
 // =============================================================
 var app = express();
 var PORT = process.env.PORT || 8080;
+
+app.use(session({
+	secret: 'c00kb00k',
+	resave: true,
+	saveUninitialized: false,
+}))
 
 // Sets up the Express app to handle data parsing
 
