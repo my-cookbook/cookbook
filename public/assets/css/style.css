@@ -97,10 +97,6 @@
 	width: 100%;
 	height: auto;
 }
-#recipe-card-container
-{
-    margin: auto;
-}
 
 /* create-recipe *************************/
 #create-recpie-body
@@ -123,4 +119,11 @@
 }
 .imageerror {
 	color: red;
+}
+
+
+/* CARDS */
+
+.recipe {
+	height: 100%;
 }

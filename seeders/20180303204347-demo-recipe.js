@@ -14,6 +14,7 @@ module.exports = {
     */
 
       return queryInterface.bulkInsert('Recipes', [{
+        //1
         recipeTitle: 'Steak',
         recipeDescription: 'mmm, steak',
         recipeProcedure: '<ul><li>cook the steak</li></ul>',
@@ -21,6 +22,7 @@ module.exports = {
         UserId: 1,
       },
       {
+        //2
         recipeTitle: 'Salad',
         recipeDescription: 'eat your veggies',
         recipeProcedure: '<ul><li>Chop the veggies</li><li>Put them in a bowl</li></ul>',
@@ -28,6 +30,7 @@ module.exports = {
         UserId: 1,
       },
       {
+        //3
         recipeTitle: 'Cereal',
         recipeDescription: 'lucky charms is the best',
         recipeProcedure: '<ul><li>Put the cereal in a bowl</li><li>pour milk on it</li></ul>',
@@ -35,6 +38,7 @@ module.exports = {
         UserId: 4,
       },
       {
+        //4
         recipeTitle: 'scrambled eggs',
         recipeDescription: '',
         recipeProcedure: '<ul><li>You know how to cook eggs, man.</li></ul>',
