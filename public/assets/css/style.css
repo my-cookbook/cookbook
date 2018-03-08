@@ -114,3 +114,13 @@
 	margin: 150px;
 	margin-top: 100px;
 }
+
+#uploadImageInput {
+  display: none;
+}
+#imageupload {
+	max-width: 200px;
+}
+.imageerror {
+	color: red;
+}
