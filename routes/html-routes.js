@@ -8,6 +8,20 @@ const db = require("../models");
 const express = require('express');
 const router = express.Router();
 
+function isAuthed(session) {
+    console.log("this is the AuthUser id:", session.userId);
+    return session && session.userId;
+}
+
+// authentication middleware
+function requiresLogin(req, res, next) {
+    if (isAuthed(req.session)) {
+        return next();
+    } else {
+        res.redirect('/login');
+    }
+}
+
 //use express router?
 
 // Routes
@@ -15,10 +29,26 @@ const router = express.Router();
 
 // GET route for getting all of the todos
 router.get("/", function (req, res) {
+    if (isAuthed(req.session)) {
+        console.log(true);
+        res.redirect("/dashboard");
+    } else {
+        console.log(false);
+        res.redirect('/login');
+    };
+});
+
+router.get('/login', function(req, res) {
+    return res.render('login');
+})
+
+router.get("/dashboard", requiresLogin, function (req, res) {
+    console.log("this is the DashboardUser id:", req.session.userId);
+
     //check if logged in
     //if logged in
     //get the user id
-    UserId = 1;
+    UserId = req.session.userId;
 
     db.User.findAll({
         where: {
@@ -39,11 +69,13 @@ router.get("/", function (req, res) {
     })
     //if not logged in
     // res.render("login");
+
 });
 
 router.get("/create-recipe", function(req, res) {
     res.render("create-recipe");
-})
+});
+
 //we can't get local storage access on the server
 //pass in the local variable from public scripts.js ajax call
 router.get("/:user/recipes", function (req, res) {
@@ -63,12 +95,13 @@ router.get("/:user/recipes", function (req, res) {
     })
     // save the data in an object and pass it into the handlebars template
     // res.render("recipes", {recipes: recipes});
-})
+});
+
 router.get("/:user/recipes/:recipe", function (req, res) {
     var user = req.params.user;
     var recipe = req.params.recipe;
     res.render("single");
-})
+});
 
 router.get("/my-recipe/:id", function (req,res) {
     var id = req.params.id;

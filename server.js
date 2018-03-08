@@ -7,6 +7,7 @@
 require('dotenv').config()
 var express = require("express");
 var bodyParser = require("body-parser");
+var session = require('express-session');
 var db = require("./models");
 var fileUpload = require("express-fileupload");
 var busboy = require("busboy");
@@ -17,13 +18,11 @@ var busboy = require("busboy");
 var app = express();
 var PORT = process.env.PORT || 8080;
 
-
-// app.use(formidable({
-//   encoding: 'utf-8',
-//   uploadDir: path.join(__dirname,'../public', 'filename.jpg'),
-//   multiples: true, // req.files to be arrays of files 
-// }));
-// Sets up the Express app to handle data parsing
+app.use(session({
+	secret: 'c00kb00k',
+	resave: true,
+	saveUninitialized: false,
+}))
 
 
 // app.use(express.static(path.join(__dirname, 'public')));

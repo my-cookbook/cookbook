@@ -18,19 +18,33 @@ const uuidv4 = require('uuid/v4');
 // =============================================================
 
 // POST route for checkingif a user exists. 
-router.post("/api/user/credentialcheck", function doesUserExist(req, res) {
+// <<<<<<< HEAD
+router.post("/api/user/credentialcheck", function (req, res) {
+    db.User.findOne({
+// =======
+// router.post("/api/user/credentialcheck", function doesUserExist(req, res) {
 
-    return db.User.count({
+//     return db.User.count({
+// >>>>>>> 91b8644d4d1f6139c1390d7276f459af7029232a
         where: {
             email: req.body.email,
             password: req.body.password
         }
-    }).then(function (count) {
-        console.log(count)
-        if (count != 1) {
-            res.json(false);
+// <<<<<<< HEAD
+    }).then(function (data) {
+        if (data) {
+            req.session.userId = data.dataValues.id;
+            res.json({ success: true })
         } else {
-            res.json(true);
+            res.json({ success: false })
+// =======
+//     }).then(function (count) {
+//         console.log(count)
+//         if (count != 1) {
+//             res.json(false);
+//         } else {
+//             res.json(true);
+// >>>>>>> 91b8644d4d1f6139c1390d7276f459af7029232a
         };
     });
 });
