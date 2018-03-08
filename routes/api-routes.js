@@ -64,7 +64,7 @@ router.post("/uploadimage", function(req,res) {
         if (err)
           return res.status(500).send(err);
      
-        res.json(pathname);
+        res.json(filename + ext);
       });
 });
 
@@ -109,6 +109,7 @@ router.post("/api/recipes/:id", function (req, res) {
         recipeDescription:recipe.RecipeDescription,
         recipeProcedure:recipe.RecipeProcedure,
         recipeNotes:recipe.Notes,
+        recipeImage: recipe.recipeImage,
         UserId: parseInt(recipe.UserId),
     }).then(function (results) //zp from res
     {

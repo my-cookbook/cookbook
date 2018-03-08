@@ -20,6 +20,7 @@ $(document).ready(function () {
     var quantity2 = $("#quantity2");
     var quantity3 = $("#quantity3");
     var Notes = $("#Notes");
+    var imagePath = $("#imagepath");
 
     // Adding event listeners for creating new users
     $(document).on("submit", "#createAccountForm", insertUser);
@@ -121,7 +122,8 @@ $(document).ready(function () {
             ],
             //      Instruction: Instruction.val().trim(),
             Notes: Notes.val().trim(),
-            UserId: 1
+            UserId: 1,
+            recipeImage: imagePath.html(),
         };
 
         console.log(newRecipe);
@@ -168,6 +170,7 @@ function uploadimage(event) {
         contentType: false
     }).done(function (data) {
         $("#imagepath").html(data);
+        $("#imageupload").attr("src","/images/" + data);
         $(".imageerror").html("");
     }).fail(function (error) {
         var errorMessage;
