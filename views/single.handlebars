@@ -1,7 +1,7 @@
 <section class="container">
 
 	<img class="img-fluid recipe-header-image" src="/images/{{recipe.recipeImage}}" alt="Card image cap">
-	
+
 	<h1>{{recipe.recipeTitle}}</h1>
 
 	<p>notes Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet eveniet quasi animi cumque natus ipsa recusandae facere! Repellendus ipsam quidem, doloremque eius esse distinctio veritatis hic error laborum dolore quo ducimus delectus eum iure labore. Atque, odio, consequatur ipsum culpa accusantium dicta distinctio ullam hic, veritatis quaerat similique! In, amet.</p>
@@ -9,19 +9,14 @@
 	<h3>Instructions</h3>
 
 	<div class="steps">
-		{recipe.recipeProcedure}
+		{{recipe.recipeProcedure}}
 	</div>
 
 	<h3>Instructions</h3>
 
 	<ol>
-		<li>step</li>
-		<li>step</li>
-		<li>step</li>
-		<li>step</li>
-		<li>step</li>
-		<li>step</li>
-		<li>step</li>
-		<li>step</li>
+		{{#each recipe.Ingredients}}
+			<li>{{quantity}} {{measurement}} {{name}}</li>
+		{{/each}}
 	</ol>
 </section>

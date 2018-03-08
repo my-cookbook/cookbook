@@ -12,9 +12,9 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-
+      
       return queryInterface.bulkInsert('Recipes', [{
-        //1
+        //recipeId  =1 
         recipeTitle: 'Steak',
         recipeDescription: 'mmm, steak',
         recipeProcedure: '<ul><li>cook the steak</li></ul>',
@@ -22,29 +22,49 @@ module.exports = {
         UserId: 1,
       },
       {
-        //2
-        recipeTitle: 'Salad',
+
+      //recipeId= 2
+        recipeTitle: 'Strawberry spinach Salad',
         recipeDescription: 'eat your veggies',
         recipeProcedure: '<ul><li>Chop the veggies</li><li>Put them in a bowl</li></ul>',
         recipeNotes: "notes",
         UserId: 1,
       },
+      //recipeId = 3 
       {
         //3
         recipeTitle: 'Cereal',
         recipeDescription: 'lucky charms is the best',
         recipeProcedure: '<ul><li>Put the cereal in a bowl</li><li>pour milk on it</li></ul>',
         recipeNotes: "notes",
-        UserId: 4,
+        UserId: 1,
       },
+      //recipeId = 4
       {
         //4
         recipeTitle: 'scrambled eggs',
         recipeDescription: '',
         recipeProcedure: '<ul><li>You know how to cook eggs, man.</li></ul>',
         recipeNotes: "notes",
-        UserId: 2,
-      }], {});
+        UserId: 1,
+      },
+      //recipeId = 5
+        {
+          recipeTitle: 'Crepes',
+          recipeDescription: 'repe is French for “pancake”',
+          recipeProcedure: '<ul><li>add lots of nutella and you are good to go!.</li></ul>',
+          recipeNotes: "notes",
+          UserId: 1,
+        },
+        //recipeId = 6
+        {
+          recipeTitle: 'Chicken and Prosciutto Club',
+          recipeDescription: 'repe is French for “pancake”',
+          recipeProcedure: '<ul><li>super easy, quick , delicious.</li></ul>',
+          recipeNotes: "notes",
+          UserId: 1,
+        }
+    ], {});
   },
 
   down: (queryInterface, Sequelize) => {
