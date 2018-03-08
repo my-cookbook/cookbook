@@ -117,24 +117,55 @@ router.post("/api/recipes/:id", function (req, res) {
         console.log(results.dataValues);
         // we will pass data into req.body from the scripts.js
         //loop the ingredients variable to add all the ingredients
-        
-        for (var i = 0; i < recipe.ingredients.length; i++) {
+        var ingredients = recipe.ingredients.length;
+        var count = 0;
+
+        console.log(ingredients + " " + count);
+
+        addIngredient();
+
+        function addIngredient() {
+            
+            console.log(count);
             db.Ingredient.create({
-                quantity: recipe.ingredients[i].quantity,
-                measurement: recipe.ingredients[i].measurement,
-                name: recipe.ingredients[i].ingredientName,
+                quantity: recipe.ingredients[count].quantity,
+                measurement: recipe.ingredients[count].measurement,
+                name: recipe.ingredients[count].ingredientName,
                 RecipeId: results.dataValues.id //zp from data.id 
             }).then(function (results) //zp from res
             {
+                count++;
                 // can only send one response, but can't compile each result as these happen asynchronously
                 // so any response outside the db function runs imediately;
                 // maybe use recursion and callbacks here?
                 // I'm not sure it's important to return anything though
-                res.json(results);
+                if (count < ingredients) {
+                    addIngredient();
+                } else {
+                    res.end("ingredients added");
+                }
+                
             }).catch(function (err) {
                 res.json(err);
             })
         }
+        // for (var i = 0; i < recipe.ingredients.length; i++) {
+        //     db.Ingredient.create({
+        //         quantity: recipe.ingredients[i].quantity,
+        //         measurement: recipe.ingredients[i].measurement,
+        //         name: recipe.ingredients[i].ingredientName,
+        //         RecipeId: results.dataValues.id //zp from data.id 
+        //     }).then(function (results) //zp from res
+        //     {
+        //         // can only send one response, but can't compile each result as these happen asynchronously
+        //         // so any response outside the db function runs imediately;
+        //         // maybe use recursion and callbacks here?
+        //         // I'm not sure it's important to return anything though
+        //         res.json(results);
+        //     }).catch(function (err) {
+        //         res.json(err);
+        //     })
+        // }
     })//.catch(function (err) {
      //   res.json(err);
    // })

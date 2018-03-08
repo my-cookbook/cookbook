@@ -21,8 +21,9 @@ module.exports = {
         recipeNotes: "notes",
         UserId: 1,
       },
-      //recipeId= 2
       {
+
+      //recipeId= 2
         recipeTitle: 'Strawberry spinach Salad',
         recipeDescription: 'eat your veggies',
         recipeProcedure: '<ul><li>Chop the veggies</li><li>Put them in a bowl</li></ul>',
@@ -31,6 +32,7 @@ module.exports = {
       },
       //recipeId = 3 
       {
+        //3
         recipeTitle: 'Cereal',
         recipeDescription: 'lucky charms is the best',
         recipeProcedure: '<ul><li>Put the cereal in a bowl</li><li>pour milk on it</li></ul>',
@@ -39,6 +41,7 @@ module.exports = {
       },
       //recipeId = 4
       {
+        //4
         recipeTitle: 'scrambled eggs',
         recipeDescription: '',
         recipeProcedure: '<ul><li>You know how to cook eggs, man.</li></ul>',

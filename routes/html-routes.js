@@ -17,10 +17,30 @@ const router = express.Router();
 router.get("/", function (req, res) {
     //check if logged in
     //if logged in
-    // res.render("dashboard");
+    //get the user id
+    UserId = 1;
+
+    db.User.findAll({
+        where: {
+            id: UserId,
+        },
+        include: [
+        {
+            model:db.Recipe,
+            include: [{model:db.Ingredient}]
+        }
+        ]
+    }).then(function (data) {
+        // res.json(data);
+        console.log(JSON.stringify(data, null, " "));
+         res.render("dashboard", {user: data});
+    }).catch(function (err) {
+        console.log(err);
+    })
     //if not logged in
-    res.render("login");
+    // res.render("login");
 });
+
 router.get("/create-recipe", function(req, res) {
     res.render("create-recipe");
 })
@@ -48,6 +68,25 @@ router.get("/:user/recipes/:recipe", function (req, res) {
     var user = req.params.user;
     var recipe = req.params.recipe;
     res.render("single");
+})
+
+router.get("/my-recipe/:id", function (req,res) {
+    var id = req.params.id;
+
+    db.Recipe.findOne({
+        where: {
+            id: id,
+        },
+        include: [db.Ingredient]
+    }).then(function(data) {
+
+        res.render("single", {recipe: data})
+    })
+
+})
+
+router.get("*", function (req,res) {
+    res.render("404");
 })
 
 
