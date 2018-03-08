@@ -1,7 +1,7 @@
-module.exports = {
+
+module.exports ={
   "development": {
     "username": "root",
-
     "dialect": "mysql"
   },
   "test": {
@@ -19,3 +19,4 @@ module.exports = {
     "dialect": "mysql"
   }
 }
+

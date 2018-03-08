@@ -12,7 +12,7 @@
 	<title>My Cookbook</title>
 	
 	<!-- rest.css -->
-	<link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
 	
 
 	<!-- bootstrap css -->
@@ -27,14 +27,37 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+	{{!-- Load require() from a local file --}}
+
 	<!-- style.css -->
-	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 
 
 
 </head>
 
+	<nav class="navbar navbar-dark" id="nav-bar">
+		<img src="/assets/img/logo.png" alt="CookApp-Logo" id="logo">
+		<h1 id="nav-title">My CookBook</h1>
+        <button type="button" class="btn btn-outline-primary">SignOut</button>
+	</nav>
+<body>
+
  {{{body}}}
- <script type="text/javascript" src="./assets/js/scripts.js"></script>
+ 	<!--Footer-->
+	<footer class="page-footer blue center-on-small-only" id="footer">
+	    <!--Copyright-->
+	    <div class="footer-copyright">
+	        <div class="container-fluid">
+	            © 2018 Copyright: By <a href="https://github.com/orgs/my-cookbook/people/bklcross">Brian</a>, <a href="https://github.com/orgs/my-cookbook/people/krose1313">Katy</a>, <a href="https://github.com/natalieryder">Natalie</a>, <a href="https://github.com/orgs/my-cookbook/people/arezonasehi">Sheila</a>
+	        </div>
+	    </div>
+	</footer>
+	 <script type="text/javascript" src="/assets/js/scripts.js"></script>
+
+</body>
+
+
 
 </html>

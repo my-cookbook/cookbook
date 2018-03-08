@@ -31,7 +31,7 @@ function requiresLogin(req, res, next) {
 router.get("/", function (req, res) {
     if (isAuthed(req.session)) {
         console.log(true);
-        res.render("dashboard");
+        res.redirect("/dashboard");
     } else {
         console.log(false);
         res.redirect('/login');
@@ -44,7 +44,32 @@ router.get('/login', function(req, res) {
 
 router.get("/dashboard", requiresLogin, function (req, res) {
     console.log("this is the DashboardUser id:", req.session.userId);
-    res.render('dashboard');
+
+    //check if logged in
+    //if logged in
+    //get the user id
+    UserId = req.session.userId;
+
+    db.User.findAll({
+        where: {
+            id: UserId,
+        },
+        include: [
+        {
+            model:db.Recipe,
+            include: [{model:db.Ingredient}]
+        }
+        ]
+    }).then(function (data) {
+        // res.json(data);
+        console.log(JSON.stringify(data, null, " "));
+         res.render("dashboard", {user: data});
+    }).catch(function (err) {
+        console.log(err);
+    })
+    //if not logged in
+    // res.render("login");
+
 });
 
 router.get("/create-recipe", function(req, res) {
@@ -77,6 +102,25 @@ router.get("/:user/recipes/:recipe", function (req, res) {
     var recipe = req.params.recipe;
     res.render("single");
 });
+
+router.get("/my-recipe/:id", function (req,res) {
+    var id = req.params.id;
+
+    db.Recipe.findOne({
+        where: {
+            id: id,
+        },
+        include: [db.Ingredient]
+    }).then(function(data) {
+
+        res.render("single", {recipe: data})
+    })
+
+})
+
+router.get("*", function (req,res) {
+    res.render("404");
+})
 
 
 module.exports = router;

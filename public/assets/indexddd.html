@@ -1,0 +1,126 @@
+<!DOCTYPE html> 
+<html lang="en">  
+<head> 
+  <meta charset="utf-8"> 
+  <title>Cookbook</title> 
+   <!-- Reset link -->
+   <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+   <!-- Bootstrap link -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/cosmo/bootstrap.min.css"/>
+   <!-- CSS style link -->
+</head> 
+
+<body>
+  <nav class="navbar navbar-expand-md navbar-light bg-light mt-0">
+    <div  class="container">
+      <!-- Clickable home logo -->
+      <a href="#" class="nav-brand"><img class="img-fluid logo" src="./images/PINS-Logo-Flat.gif"></a>
+      <!-- Mobile Menu Button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBarNav" aria-controls="navBarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Hides items at a min-width -->
+      <div class="collapse navbar-collapse" id="navBarNav">
+        <!-- Navigation items -->
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#createAccountModal">Create Account</button> 
+          </li>
+          <li class="nav-item">
+            <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#logInModal">Log In</button> 
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div id="logInModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form class="form-horizontal" id="logInForm">
+          <fieldset>
+            <legend>Log In</legend>
+            <div class="form-group">
+              <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" id="userEmail" placeholder="email">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+              <div class="col-lg-10">
+                <input type="password" class="form-control" id="userPassword" placeholder="Password">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-lg-10 col-lg-offset-2">
+                <button type="reset" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>  
+
+  <div id="createAccountModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form class="form-horizontal" id="createAccountForm">
+          <fieldset>
+            <legend>Create an Account</legend>
+            <div class="form-group">
+              <label for="inputFirstName" class="col-lg-2 control-label">First Name</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputFirstName" placeholder="first name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputLastName" class="col-lg-2 control-label">Last Name</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputLastName" placeholder="last name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputEmail" placeholder="email">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+              <div class="col-lg-10">
+                <input type="password" class="form-control" id="inputPassword" placeholder="password">
+              </div>
+            </div>
+<!--             <div class="form-group">
+              <label for="inputConfirmPassword" class="col-lg-2 control-label">Confirm Password</label>
+              <div class="col-lg-10">
+                <input type="password" class="form-control" id="inputConfirmPassword" placeholder="confirm password">
+              </div>
+            </div> -->
+            <div class="form-group">
+              <div class="col-lg-10 col-lg-offset-2">
+                <button type="reset" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>  
+
+  <!-- Jquery Script -->
+   <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+   <!-- Bootstrap Script -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+   <!-- Bootstrap Script Javascript -->
+   <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+   <script type="text/javascript" src="./assets/js/scripts.js"></script>
+
+</body> 
+
+
+</html>

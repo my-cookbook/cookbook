@@ -1,12 +1,3 @@
-<body id="dashboard-body">
-
-	<!-- navbar -->
-	<nav class="navbar navbar-dark" id="nav-bar">
-		<img src="./assets/img/logo.png" alt="CookApp-Logo" id="logo">
-		<h1 id="nav-title">My CookBook</h1>
-        <button type="button" class="btn btn-outline-primary">SignOut</button>
-	</nav>
-	
 	<!-- icon container -->
 	<div id="dashboard-container">
 		<div class="jumbotron" id="icon-container">
@@ -27,14 +18,22 @@
 		</div>
 	</div>
 
-	<!--Footer-->
-	<footer class="page-footer blue center-on-small-only" id="footer">
-	    <!--Copyright-->
-	    <div class="footer-copyright">
-	        <div class="container-fluid">
-	            © 2018 Copyright: By Brian, Katy, <a href="https://github.com/natalieryder">Natalie</a>, Sheila
-	        </div>
-	    </div>
-	</footer>
+	<!-- sample recipe card -->
 
-</body>
+	<div class="container">
+		<h1>Welcome, {{user.[0].first_name}}</h1>
+		<div class="row">
+			{{#each user.[0].Recipes}}<div class="col-sm-4 mb-3">
+				<a href="my-recipe/{{id}}" class="card recipe" id="recipe-card-container">
+					{{#if recipeImage}}
+						<img class="card-img-top"  src="images/{{recipeImage}}" alt="Recipe Image" class="recipe-image">
+					{{/if}}
+					<div class="card-body">
+						<h4 class="card-title">{{recipeTitle}}</h4>
+						<p class="card-text">{{recipeDescription}}</p>
+					</div>
+				</a>
+			</div>
+			{{/each}}
+		</div>
+	</div>

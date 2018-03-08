@@ -8,7 +8,7 @@ var Ingredient = sequelize.define("Ingredient", {
         type: DataTypes.STRING,
         AllowNull: true,
         Validate: {
-            len: [0, 200]
+            len: [0, 2000]
         }
     },
     // the permission Type gets saved as a string
@@ -16,12 +16,12 @@ var Ingredient = sequelize.define("Ingredient", {
         type: DataTypes.STRING,
         AllowNull: true,
         Validate: {
-            len: [0, 200]
+            len: [0, 2000]
         }
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
 
     }
     // the permission Description  (a string)
