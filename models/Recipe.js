@@ -18,7 +18,7 @@ var Recipe = sequelize.define("Recipe", {
         type: DataTypes.STRING,
         allowNull: true,
         validate: {
-            len: [1, 200]
+            len: [0, 200]
         }
     },
     //clumn in recipe Procedure 
@@ -26,7 +26,7 @@ var Recipe = sequelize.define("Recipe", {
         type: DataTypes.STRING,
         allowNull: true,
         validate: {
-            len: [1, 2000]
+            len: [0, 2000]
         }
     },
     //clumn for notes 
@@ -34,8 +34,11 @@ var Recipe = sequelize.define("Recipe", {
         type: DataTypes.STRING,
         allowNull: true,
         validate: {
-            len: [1, 2000]
-        }  
+            len: [0, 200]
+        }
+    },
+    recipeImage: {
+        type: DataTypes.STRING,
     }
 
 }, {

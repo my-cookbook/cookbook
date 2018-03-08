@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     // Getting a reference to the input field where user creates a new account
     var newFirstNameInput = $("input#inputFirstName");
     var newLastNameInput = $("input#inputLastName");
@@ -18,7 +19,6 @@ $(document).ready(function () {
     var quantity1 = $("#quantity1");
     var quantity2 = $("#quantity2");
     var quantity3 = $("#quantity3");
-  //  var Instruction = $("#Instruction");
     var Notes = $("#Notes");
 
     // Adding event listeners for creating new users
@@ -69,32 +69,57 @@ $(document).ready(function () {
     };
 
     //Adding new recipes 
-    $(document).on("submit", "#createNewRecipe", insertRecipe)
+    $(document).on("click", "#recipeFormSumbit", insertRecipe)
 
     // This function inserts a new recipe into our database and then updates the view
     function insertRecipe(event) {
         event.preventDefault();
+
+        var newRecipetest = {
+            "NewRecipeTitle": "new recipe",
+            "RecipeDescription": "description",
+            "Instruction": "steps",
+            "Notes": "note",
+            "Ingredients": [{
+                    "measurement": "cup",
+                    "quantity": 1,
+                    "name": "things"
+                },
+                {
+                    "measurement": "tsp",
+                    "quantity": 3,
+                    "name": "stuff"
+                },
+                {
+                    "measurement": "pinch",
+                    "quantity": 1,
+                    "name": "junk"
+                }
+            ]
+
+        }
+
         var newRecipe = {
             NewRecepieTitle: NewRecepieTitle.val().trim(),
             RecipeDescription: RecipeDescription.val().trim(),
             RecipeProcedure: RecipeProcedure.val().trim(),
             ingredients: [{
-                ingredientName: Ingredient1.val().trim(),
-                quantity: quantity1.val().trim(),
-                measurement: measurement1.val().trim(),
-            },
-            {
-                ingredientName: Ingredient2.val().trim(),
-                quantity: quantity2.val().trim(),
-                measurement: measurement2.val().trim(),
-            },
-            {
-                ingredientName: Ingredient3.val().trim(),
-                quantity: quantity3.val().trim(),
-                measurement: measurement3.val().trim(),
-            },
+                    ingredientName: Ingredient1.val().trim(),
+                    quantity: quantity1.val().trim(),
+                    measurement: measurement1.val().trim(),
+                },
+                {
+                    ingredientName: Ingredient2.val().trim(),
+                    quantity: quantity2.val().trim(),
+                    measurement: measurement2.val().trim(),
+                },
+                {
+                    ingredientName: Ingredient3.val().trim(),
+                    quantity: quantity3.val().trim(),
+                    measurement: measurement3.val().trim(),
+                },
             ],
-      //      Instruction: Instruction.val().trim(),
+            //      Instruction: Instruction.val().trim(),
             Notes: Notes.val().trim(),
             UserId: 1
         };
@@ -103,19 +128,63 @@ $(document).ready(function () {
 
         $.post("/api/recipes/1", newRecipe)
 
-    NewRecepieTitle.val("");
-     RecipeDescription.val("");
-    Ingredient1.val("");
-     Ingredient2.val("");
-    Ingredient3.val("");
-    measurement1.val("");
-    measurement2.val("");
-     measurement3.val("");
-    quantity1.val("");
-    quantity2.val("");
-     quantity3.val("");
-    RecipeProcedure.val("");
-     Notes.val("") ;
+        NewRecepieTitle.val("");
+        RecipeDescription.val("");
+        Ingredient1.val("");
+        Ingredient2.val("");
+        Ingredient3.val("");
+        measurement1.val("");
+        measurement2.val("");
+        measurement3.val("");
+        quantity1.val("");
+        quantity2.val("");
+        quantity3.val("");
+        RecipeProcedure.val("");
+        Notes.val("");
     }
+
+
+
+$('.upload-btn').on('click', function () {
+    $('#uploadImageInput').click();
+});
+
+$('#uploadImageInput').on('change', uploadimage);
+
+$(document).on("click", "#imageFormSubmit", uploadimage);
+
+function uploadimage(event) {
+    event.preventDefault();
+
+    //get the form data from the image form
+    var myForm = document.getElementById('uploadForm');
+
+    //post the image to the /uploadimage route
+    $.ajax({
+        url: "/uploadimage",
+        type: 'POST',
+        data: new FormData(myForm),
+        processData: false,
+        contentType: false
+    }).done(function (data) {
+        $("#imagepath").html(data);
+        $(".imageerror").html("");
+    }).fail(function (error) {
+        var errorMessage;
+        console.log(error.status);
+
+        switch (error.status) {
+        case 413:
+            errorMessage = "Image must be smaller than 5MB"
+            break;
+        case 415:
+            errorMessage = "Unsupported File Type";
+            break;
+        default:
+        }
+
+        $(".imageerror").html(errorMessage);
+    });
+};
 
 });

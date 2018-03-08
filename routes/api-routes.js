@@ -7,6 +7,10 @@
 const db = require("../models");
 const express = require('express');
 const router = express.Router();
+const path = require("path");
+const uuidv4 = require('uuid/v4');
+
+// var formidable = require('formidable');
 
 //use express router?
 
@@ -31,7 +35,38 @@ router.post("/api/user/credentialcheck", function doesUserExist(req, res) {
     });
 });
 
-// GET route for getting all of the todos
+
+router.post("/uploadimage", function(req,res) {
+
+    var mimetype = req.files.recipeimage.mimetype;
+    var ext;
+
+    // check if the mimetype is allowed and set the ext
+    if (mimetype === "image/jpeg") {
+        ext = ".jpg";
+    } else if (mimetype === "image/png") {
+        ext = ".png";
+    } else {
+        return res.status(415).send(err);
+    }
+
+    if (!req.files)
+        return res.status(400).send('No files were uploaded.');
+     
+      // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+    let sampleFile = req.files.recipeimage;
+    var filename = uuidv4();
+      // Use the mv() method to place the file somewhere on your server
+
+      var pathname = path.join(__dirname,'../public/images', filename + ext);
+      console.log(pathname);
+      sampleFile.mv(pathname, function(err) {
+        if (err)
+          return res.status(500).send(err);
+     
+        res.json(pathname);
+      });
+});
 
 router.post("/api/user", function (req, res) {
 
@@ -98,9 +133,7 @@ router.post("/api/recipes/:id", function (req, res) {
             }).catch(function (err) {
                 res.json(err);
             })
-
         }
-
     })//.catch(function (err) {
      //   res.json(err);
    // })
