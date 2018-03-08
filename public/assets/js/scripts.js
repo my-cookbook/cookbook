@@ -96,6 +96,7 @@ $(document).ready(function () {
             ],
       //      Instruction: Instruction.val().trim(),
             Notes: Notes.val().trim(),
+            UserId: 1
         };
 
         console.log(newRecipe);

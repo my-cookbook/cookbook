@@ -66,21 +66,22 @@ router.post("/createUser", function (req, res) {
 router.post("/api/recipes/:id", function (req, res) {
     // hardcoded UserId for now
     console.log("req ", req.body);
+    var recipe = req.body;
     // create a recipe
     db.Recipe.create({  //zp db.recipes  
         //id: recipe.title,
-        recipeTitle: req.body.NewRecepieTitle, //zp was NewRecepieTitl
-        recipeDescription: req.body.RecipeDescription,
-        recipeProcedure: req.body.RecipeProcedure,
-        recipeNotes: req.body.Notes,
-        //  UserId: parseInt(req.body.UserId),
+        recipeTitle:recipe.NewRecepieTitle, //zp was NewRecepieTitl
+        recipeDescription:recipe.RecipeDescription,
+        recipeProcedure:recipe.RecipeProcedure,
+        recipeNotes:recipe.Notes,
+        UserId: parseInt(recipe.UserId),
     }).then(function (results) //zp from res
     {
         // with the created recipe id, add ingredients
         console.log(results.dataValues);
         // we will pass data into req.body from the scripts.js
         //loop the ingredients variable to add all the ingredients
-        var recipe = req.body;
+        
         for (var i = 0; i < recipe.ingredients.length; i++) {
             db.Ingredient.create({
                 quantity: recipe.ingredients[i].quantity,

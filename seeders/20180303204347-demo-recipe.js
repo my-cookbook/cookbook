@@ -15,26 +15,30 @@ module.exports = {
 
       return queryInterface.bulkInsert('Recipes', [{
         recipeTitle: 'Steak',
-        recipeNote: 'mmm, steak',
-        recipeSteps: '<ul><li>cook the steak</li></ul>',
+        recipeDescription: 'mmm, steak',
+        recipeProcedure: '<ul><li>cook the steak</li></ul>',
+        recipeNotes: "notes",
         UserId: 1,
       },
       {
         recipeTitle: 'Salad',
-        recipeNote: 'eat your veggies',
-        recipeSteps: '<ul><li>Chop the veggies</li><li>Put them in a bowl</li></ul>',
+        recipeDescription: 'eat your veggies',
+        recipeProcedure: '<ul><li>Chop the veggies</li><li>Put them in a bowl</li></ul>',
+        recipeNotes: "notes",
         UserId: 1,
       },
       {
         recipeTitle: 'Cereal',
-        recipeNote: 'lucky charms is the best',
-        recipeSteps: '<ul><li>Put the cereal in a bowl</li><li>pour milk on it</li></ul>',
+        recipeDescription: 'lucky charms is the best',
+        recipeProcedure: '<ul><li>Put the cereal in a bowl</li><li>pour milk on it</li></ul>',
+        recipeNotes: "notes",
         UserId: 4,
       },
       {
         recipeTitle: 'scrambled eggs',
-        recipeNote: '',
-        recipeSteps: '<ul><li>You know how to cook eggs, man.</li></ul>',
+        recipeDescription: '',
+        recipeProcedure: '<ul><li>You know how to cook eggs, man.</li></ul>',
+        recipeNotes: "notes",
         UserId: 2,
       }], {});
   },
