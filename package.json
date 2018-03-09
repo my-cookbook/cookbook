@@ -1,6 +1,6 @@
 {
-  "name": "newnawe",
-  "version": "1.0.4",
+  "name": "cookbook",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {

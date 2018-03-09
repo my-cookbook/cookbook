@@ -27,8 +27,7 @@ app.use(session({
 
 // app.use(express.static(path.join(__dirname, 'public')));
 
-// // parse app
-lication/x-www-form-urlencoded
+// // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 // // parse application/json
 app.use(bodyParser.json());
