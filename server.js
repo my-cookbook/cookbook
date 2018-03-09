@@ -58,8 +58,6 @@ const htmlroutes = require("./routes/html-routes.js");
 app.use(apiroutes);
 app.use(htmlroutes);
 
-
-
 // Starting our Express app
 // =============================================================
 db.sequelize.sync().then(function() {
