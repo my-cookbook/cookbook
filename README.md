@@ -1,5 +1,6 @@
 # cookbook
 
+## Requirements
 ✔ Must use a Node and Express Web Server
 
 ✔ Must be backed by a MySQL Database with a Sequelize ORM  
@@ -23,7 +24,7 @@ Must have folder structure that meets MVC Paradigm
 
 Must meet good quality coding standards (indentation, scoping, naming)
 
-nice to have
+# nice to have
 
 ✔ Utilize Handlebars for Server-Side Templating
 
@@ -32,7 +33,7 @@ nice to have
 ✔ Create a migration strategy for sharing data across team members.
 
 
-#To Do
+# To Do
 
 ## User Auth
 
