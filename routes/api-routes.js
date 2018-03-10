@@ -57,7 +57,7 @@ router.post("/uploadimage", function(req,res) {
     var filename = uuidv4();
       // Use the mv() method to place the file somewhere on your server
 
-      var pathname = path.join(__dirname,'../public/images', filename + ext);
+      var pathname = path.join(__dirname,'../public/foodimages/', filename + ext);
       console.log(pathname);
       sampleFile.mv(pathname, function(err) {
         if (err)

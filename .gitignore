@@ -58,5 +58,5 @@ typings/
 .env
 
 # ignoring uploaded images
-public/images
+# public/images/*
 
