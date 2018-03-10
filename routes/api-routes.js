@@ -95,7 +95,10 @@ router.post("/api/user", function (req, res) {
         PermissionLevelId: 3,
     }).then(function () {
         res.end();
-    });
+    }).catch(function(err) {
+        console.log("user creation failed");
+        res.status(400).send(err);
+    })
 });
 
 router.get("/:user/recipes/:recipe", function (req, res) {

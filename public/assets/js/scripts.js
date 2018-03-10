@@ -38,12 +38,40 @@ $(document).ready(function () {
 
       console.log(user);
 
-      $.post("/api/user", user);
+      $.post("/api/user", user)
+      .then( function (data) {
+      $("#createAccountModal").modal("toggle");
+      }).catch( function (err) {
+
+        var code = err.status;
+        var errorMessage;
+
+        switch (code) {
+          case 400: 
+              errorMessage = "You filled out the user registration form incorrectly.";
+              break;
+          default:
+              errorMessage = "Uknown error.";
+        }
+        
+        alert(errorMessage);
+
+      });
+
       newFirstNameInput.val("");
       newLastNameInput.val("");
       newEmailInput.val("");
       newPasswordInput.val("");
+
   };
+
+  $(document).on("reset", "#createAccountForm", cancelRegistrationForm);
+
+  function cancelRegistrationForm(event) {
+    event.preventDefault();
+    $("#createAccountModal").modal("toggle");
+  };
+
 
   // Getting a reference to the input field where user logs in
   var existingUserEmail = $("input#userEmail");
