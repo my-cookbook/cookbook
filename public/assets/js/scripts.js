@@ -132,7 +132,6 @@ $(document).ready(function () {
                     "name": "junk"
                 }
             ]
-
         }
 
         var newRecipe = {
@@ -163,7 +162,7 @@ $(document).ready(function () {
 
         console.log(newRecipe);
 
-        $.post("/api/recipes/1", newRecipe)
+        $.post("/api/recipes", newRecipe)
 
         NewRecepieTitle.val("");
         RecipeDescription.val("");
@@ -178,9 +177,10 @@ $(document).ready(function () {
         quantity3.val("");
         RecipeProcedure.val("");
         Notes.val("");
+        imagePath.html("");
+        $("#imageupload").hide();
+        $(".imageerror").html("");
     }
-
-
 
 $('.upload-btn').on('click', function () {
     $('#uploadImageInput').click();
@@ -205,7 +205,7 @@ function uploadimage(event) {
         contentType: false
     }).done(function (data) {
         $("#imagepath").html(data);
-        $("#imageupload").attr("src","/images/" + data);
+        $("#imageupload").show().attr("src","/foodimages/" + data);
         $(".imageerror").html("");
     }).fail(function (error) {
         var errorMessage;
