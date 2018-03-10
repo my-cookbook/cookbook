@@ -91,15 +91,7 @@ router.get("/:user/recipes/:recipe", function (req, res) {
     var recipe = req.params.recipe;
     res.render("single");
 })
-router.post("/createUser", function (req, res) {
-    db.User.create({
-        name: "natalie"
-    }).then(function (data) {
-        res.json(data);
-    }).catch(function (err) {
-        res.json(err);
-    })
-})
+
 router.post("/api/recipes/", function (req, res) {
     // hardcoded UserId for now
     UserId = req.session.userId;

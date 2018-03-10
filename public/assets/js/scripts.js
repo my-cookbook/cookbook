@@ -133,32 +133,32 @@ $(document).ready(function () {
                 }
             ]
         }
+        var ingredients = $(".ingredients-form-fields");
+        console.log("number of ingredients");
+        console.log(ingredients);
+        console.log($(ingredients).children().length);
+
+        
 
         var newRecipe = {
             NewRecepieTitle: NewRecepieTitle.val().trim(),
             RecipeDescription: RecipeDescription.val().trim(),
             RecipeProcedure: RecipeProcedure.val().trim(),
-            ingredients: [{
-                    ingredientName: Ingredient1.val().trim(),
-                    quantity: quantity1.val().trim(),
-                    measurement: measurement1.val().trim(),
-                },
-                {
-                    ingredientName: Ingredient2.val().trim(),
-                    quantity: quantity2.val().trim(),
-                    measurement: measurement2.val().trim(),
-                },
-                {
-                    ingredientName: Ingredient3.val().trim(),
-                    quantity: quantity3.val().trim(),
-                    measurement: measurement3.val().trim(),
-                },
-            ],
-            //      Instruction: Instruction.val().trim(),
+            ingredients: [],
             Notes: Notes.val().trim(),
             UserId: 1,
             recipeImage: imagePath.html(),
         };
+
+        $(ingredients).children().each(function () {
+          var newIngredient = {}
+
+          newIngredient.ingredientName = $(this).children(":eq(0)").children('.form-control').val();
+          newIngredient.quantity = $(this).children(":eq(1)").children('.form-control').val();
+          newIngredient.measurement = $(this).children(":eq(2)").children('.form-control').val();
+
+          newRecipe.ingredients.push(newIngredient);
+        });
 
         console.log(newRecipe);
 
@@ -224,5 +224,20 @@ function uploadimage(event) {
         $(".imageerror").html(errorMessage);
     });
 };
+
+// add new ingredient
+
+$(document).on("click", "#add-new-ingredient", addNewIngredientRow);
+
+function addNewIngredientRow(event) {
+    event.preventDefault();
+    var newIngredientRow = $('.ingredient-row').first().clone();
+    var ingredients = $('.ingredients-form-fields');
+
+    //delete all the values of the copied row
+    var children = $(newIngredientRow).children().children().val("");
+
+    newEntry = $(newIngredientRow).appendTo(ingredients);
+}
 
 });
