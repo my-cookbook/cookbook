@@ -1,24 +1,27 @@
-<section class="container">
+<section class="container my-4 p-4 single-recipe col-md-8 mx-auto border">
+	{{#if recipe.recipeImage }}
+		<div class="recipe-header-container img-container">
+			<img class="img-fluid recipe-header-image" src="/foodimages/{{recipe.recipeImage}}" alt="Card image cap">
+		</div>
+	{{/if}}
 
-	<img class="img-fluid recipe-header-image" src="/foodimages/{{recipe.recipeImage}}" alt="Card image cap">
-
-	<h1>{{recipe.recipeTitle}}</h1>
+	<h1 class="my-4">{{recipe.recipeTitle}}</h1>
 	{{#if recipe.recipeDescription}}
 	<p>{{recipe.recipeDescription}}</p>
 	{{/if}}
 	
 
-	<h3>Instructions</h3>
+	<h3 class="mt-5">Instructions</h3>
 
 	<div class="steps">
 		{{{recipe.recipeProcedure}}}
 	</div>
 
-	<h3>Instructions</h3>
+	<h3 class="mt-5">Ingredients</h3>
 
-	<ol>
+	<ul>
 		{{#each recipe.Ingredients}}
-			<li>{{quantity}} {{measurement}} {{name}}</li>
+			<li class="mb-2"><span class="bold quantity">{{quantity}}</span> {{measurement}} {{name}}</li>
 		{{/each}}
-	</ol>
+	</ul>
 </section>

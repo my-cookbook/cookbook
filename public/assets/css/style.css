@@ -123,13 +123,47 @@
 	color: red;
 }
 
+h1.text-white {
+	text-shadow: 2px 2px 2px rgba(0,0,0,.5);
+}
+
 
 /* CARDS */
 
 .recipe {
 	height: 100%;
 }
+a.recipe {
+	color: initial;
+	border: 0px;
+	filter: saturate(100%) contrast(100%);
+	transition: filter .2s ease;
+}
+a.recipe:hover {
+	text-decoration: none;
+	filter: saturate(150%) contrast(150%);
 
+}
+
+.img-container {
+	height: 0;
+    padding-bottom: 60%;
+    overflow: hidden;
+    position: relative;
+}
+.img-container img {
+	position:absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+}
+
+.recipe-header-container {
+	padding-bottom: 40%;
+	width: 100%;
+}
+.recipe-header-container img {
+	width: 100%;
+}
 .modal {
   text-align: center;
   padding: 0!important;
@@ -154,4 +188,27 @@
 label {
 	display: inline !important;
     margin-bottom: .5rem !important;
+}
+
+/*ingredient list*/
+
+.quantity {
+	width: 50px;
+	text-align: right;
+	display: inline-block;
+	padding-right: 10px;
+}
+
+/*typography*/
+
+.bold {font-weight: 800;}
+
+ol {
+	list-style: decimal;
+	list-style-position: inside;
+	font-weight: 800;
+}
+ol li {
+	/*font-weight: 400;*/
+
 }
