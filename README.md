@@ -37,12 +37,12 @@ Must meet good quality coding standards (indentation, scoping, naming)
 
 ## User Auth
 
--check login status on create-recipe page
--add user id when recipe is created
--check login status on my-recipe page
--make log out button work
--clear modal and log user in when account is created
--show error when incorrect login is entered
+- check login status on create-recipe page
+- add user id when recipe is created
+- check login status on my-recipe page
+- make log out button work
+- clear modal and log user in when account is created
+- show error when incorrect login is entered
 
 ## UI
 - add "my recipes" to nav
