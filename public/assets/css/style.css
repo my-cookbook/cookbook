@@ -132,6 +132,9 @@ h1.text-white {
 
 .recipe {
 	height: 100%;
+	border: 1px solid black;
+	box-shadow: 3px 3px 3px rgba(0,0,0,.5);
+	overflow: hidden;
 }
 a.recipe {
 	color: initial;
@@ -209,6 +212,6 @@ ol {
 	font-weight: 800;
 }
 ol li {
-	/*font-weight: 400;*/
+	font-weight: 400;
 
 }

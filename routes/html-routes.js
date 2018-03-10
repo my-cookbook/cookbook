@@ -18,7 +18,7 @@ function requiresLogin(req, res, next) {
     if (isAuthed(req.session)) {
         return next();
     } else {
-        res.redirect('/login');
+        res.redirect('/login',);
     }
 }
 
@@ -39,7 +39,7 @@ router.get("/", function (req, res) {
 });
 
 router.get('/login', function(req, res) {
-    return res.render('login');
+    return res.render('login',  {data: req.session.userId});
 });
 
 router.get("/dashboard", requiresLogin, function (req, res) {
