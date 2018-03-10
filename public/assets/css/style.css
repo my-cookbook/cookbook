@@ -65,6 +65,7 @@
 	background-image: url("../img/dashboard.jpg");
 	background-size: 1400px auto;
 	background-position: center;
+	padding: 20px;
 }
 /* icon container */
 #icon-container
@@ -104,6 +105,7 @@
 	background-image: url("../img/create-recipe.jpg");
 	background-size: 2050px auto;
 	background-position: center;
+	padding: 20px;
 }
 #create-recipe-container
 {
