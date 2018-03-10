@@ -3,6 +3,8 @@
  ### For Image Uploads:
  - express-fileupload
  - busboy
+ - uuid
+ 
  ### For user authentication
  - express-session
 
