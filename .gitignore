@@ -57,6 +57,9 @@ typings/
 # dotenv environment variables file
 .env
 
-# ignoring uploaded images
-# public/images/*
+# ignore all the images
+public/foodimages/*
+
+# exception so the dirctory isn't ignored
+!public/foodimages/README.md 
 
