@@ -82,7 +82,7 @@ router.post("/api/user", function (req, res) {
         res.end();
     }).catch(function(err) {
         console.log("user creation failed");
-        res.status(415).send(err);
+        res.status(400).send(err);
     })
 });
 

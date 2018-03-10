@@ -40,7 +40,7 @@ router.get("/", function (req, res) {
 
 router.get('/login', function(req, res) {
     return res.render('login');
-})
+});
 
 router.get("/dashboard", requiresLogin, function (req, res) {
     console.log("this is the DashboardUser id:", req.session.userId);
