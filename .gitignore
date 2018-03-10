@@ -61,5 +61,5 @@ typings/
 public/foodimages/*
 
 # exception so the dirctory isn't ignored
-!public/foodimages/README.md 
+# !public/foodimages/README.md 
 

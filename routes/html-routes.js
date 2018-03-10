@@ -101,7 +101,7 @@ router.get("/:user/recipes/:recipe", function (req, res) {
     res.render("single");
 });
 
-router.get("/my-recipe/:id", function (req,res) {
+router.get("/my-recipe/:id", requiresLogin, function (req,res) {
     var id = req.params.id;
 
     db.Recipe.findOne({
