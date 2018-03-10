@@ -209,7 +209,7 @@ function uploadimage(event) {
         $(".imageerror").html("");
     }).fail(function (error) {
         var errorMessage;
-        console.log(error.status);
+        console.log(error);
 
         switch (error.status) {
         case 413:
