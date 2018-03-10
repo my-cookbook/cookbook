@@ -177,7 +177,7 @@ function uploadimage(event) {
         contentType: false
     }).done(function (data) {
         $("#imagepath").html(data);
-        $("#imageupload").attr("src","/images/" + data);
+        $("#imageupload").attr("src","/foodimages/" + data);
         $(".imageerror").html("");
     }).fail(function (error) {
         var errorMessage;
