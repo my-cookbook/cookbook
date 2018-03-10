@@ -11,7 +11,8 @@
                     <input type="text" id="recepedescription" class="form-control" placeholder="Enter Recipe Description (One Sentence)">
                 </div>
                 <!-- ingredients -->
-                <div class="ingredient row">
+            <div class="ingredients-form-fields">
+                <div class="ingredient row ingredient-row">
                     <div class="col-sm-8">
                         <label for="Ingredient">Ingredient</label>
                         <input type="text" class="form-control" id="Ingredient1" placeholder="Enter Ingredient Name">
@@ -24,6 +25,7 @@
                         <label for="Units">Unit</label>
                         <select class="form-control" id ="measurement1">
                             <option style="opacity: .8">select one</option>
+                            <option hidden value=""></option>
                             <option>tsp</option>
                             <option>tbs</option>
                             <option>c</option>
@@ -36,66 +38,14 @@
                             <option>oz</option>
                             <option>lbs</option>
                             <option>gal</option>
+                            <option>bunch</option>
+                            <option>each</option>
                         </select>
                     </div> 
                 </div>
-                                <div class="ingredient row">
-                    <div class="col-sm-8">
-                        <label for="Ingredient">Ingredient</label>
-                        <input type="text" class="form-control" id="Ingredient2" placeholder="Enter Ingredient Name">
-                    </div>
-                    <div class="form-group col-sm-2">
-                        <label for="Amount">Amount</label>
-                        <input type="text" class="form-control" id="quantity2" placeholder="Enter Amount">
-                    </div>
-                    <div class="form-group col-sm-2">
-                        <label for="Units">Unit</label>
-                        <select class="form-control" id ="measurement2">
-                            <option style="opacity: .8">select one</option>
-                            <option>tsp</option>
-                            <option>tbs</option>
-                            <option>c</option>
-                            <option>pt</option>
-                            <option>mL</option>
-                            <option>L</option>
-                            <option>qt</option>
-                            <option>dash</option>
-                            <option>drop</option>
-                            <option>oz</option>
-                            <option>lbs</option>
-                            <option>gal</option>
-                        </select>
-                    </div> 
-                </div>
-                                <div class="ingredient row">
-                    <div class="col-sm-8">
-                        <label for="Ingredient">Ingredient</label>
-                        <input type="text" class="form-control" id="Ingredient3" placeholder="Enter Ingredient Name">
-                    </div>
-                    <div class="form-group col-sm-2">
-                        <label for="Amount">Amount</label>
-                        <input type="text" class="form-control" id="quantity3" placeholder="Enter Amount">
-                    </div>
-                    <div class="form-group col-sm-2">
-                        <label for="Units">Unit</label>
-                        <select class="form-control" id ="measurement3">
-                            <option style="opacity: .8">select one</option>
-                            <option>tsp</option>
-                            <option>tbs</option>
-                            <option>c</option>
-                            <option>pt</option>
-                            <option>mL</option>
-                            <option>L</option>
-                            <option>qt</option>
-                            <option>dash</option>
-                            <option>drop</option>
-                            <option>oz</option>
-                            <option>lbs</option>
-                            <option>gal</option>
-                        </select>
-                    </div> 
-                </div>
-                <!-- procedure or protocol -->
+            </div>{{!-- end ingredients form fields --}}
+            <button class="btn" id="add-new-ingredient">Add</button>
+                {{!-- <!-- procedure or protocol --> --}}
                 <div class="form-group">
                     <label for="Procedure">Procedure</label>
                     <textarea class="form-control" id="Procedure" rows="3" placeholder="Enter Protocol"></textarea>

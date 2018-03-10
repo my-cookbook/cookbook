@@ -40,14 +40,11 @@ router.get("/", function (req, res) {
 
 router.get('/login', function(req, res) {
     return res.render('login');
-})
+});
 
 router.get("/dashboard", requiresLogin, function (req, res) {
     console.log("this is the DashboardUser id:", req.session.userId);
 
-    //check if logged in
-    //if logged in
-    //get the user id
     UserId = req.session.userId;
 
     db.User.findAll({
@@ -69,11 +66,12 @@ router.get("/dashboard", requiresLogin, function (req, res) {
     })
     //if not logged in
     // res.render("login");
-
 });
 
-router.get("/create-recipe", function(req, res) {
+router.get("/create-recipe", requiresLogin, function(req, res) {
+ 
     res.render("create-recipe");
+
 });
 
 //we can't get local storage access on the server
@@ -103,7 +101,7 @@ router.get("/:user/recipes/:recipe", function (req, res) {
     res.render("single");
 });
 
-router.get("/my-recipe/:id", function (req,res) {
+router.get("/my-recipe/:id", requiresLogin, function (req,res) {
     var id = req.params.id;
 
     db.Recipe.findOne({

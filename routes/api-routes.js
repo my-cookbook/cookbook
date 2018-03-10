@@ -10,7 +10,7 @@ const router = express.Router();
 const path = require("path");
 const uuidv4 = require('uuid/v4');
 
-// var formidable = require('formidable');
+
 
 //use express router?
 
@@ -18,37 +18,22 @@ const uuidv4 = require('uuid/v4');
 // =============================================================
 
 // POST route for checkingif a user exists. 
-// <<<<<<< HEAD
+
 router.post("/api/user/credentialcheck", function (req, res) {
     db.User.findOne({
-// =======
-// router.post("/api/user/credentialcheck", function doesUserExist(req, res) {
-
-//     return db.User.count({
-// >>>>>>> 91b8644d4d1f6139c1390d7276f459af7029232a
         where: {
             email: req.body.email,
             password: req.body.password
         }
-// <<<<<<< HEAD
     }).then(function (data) {
         if (data) {
             req.session.userId = data.dataValues.id;
             res.json({ success: true })
         } else {
             res.json({ success: false })
-// =======
-//     }).then(function (count) {
-//         console.log(count)
-//         if (count != 1) {
-//             res.json(false);
-//         } else {
-//             res.json(true);
-// >>>>>>> 91b8644d4d1f6139c1390d7276f459af7029232a
         };
     });
 });
-
 
 router.post("/uploadimage", function(req,res) {
 
@@ -72,7 +57,7 @@ router.post("/uploadimage", function(req,res) {
     var filename = uuidv4();
       // Use the mv() method to place the file somewhere on your server
 
-      var pathname = path.join(__dirname,'../public/images', filename + ext);
+      var pathname = path.join(__dirname,'../public/foodimages/', filename + ext);
       console.log(pathname);
       sampleFile.mv(pathname, function(err) {
         if (err)
@@ -95,7 +80,10 @@ router.post("/api/user", function (req, res) {
         PermissionLevelId: 3,
     }).then(function () {
         res.end();
-    });
+    }).catch(function(err) {
+        console.log("user creation failed");
+        res.status(400).send(err);
+    })
 });
 
 router.get("/:user/recipes/:recipe", function (req, res) {
@@ -103,17 +91,10 @@ router.get("/:user/recipes/:recipe", function (req, res) {
     var recipe = req.params.recipe;
     res.render("single");
 })
-router.post("/createUser", function (req, res) {
-    db.User.create({
-        name: "natalie"
-    }).then(function (data) {
-        res.json(data);
-    }).catch(function (err) {
-        res.json(err);
-    })
-})
-router.post("/api/recipes/:id", function (req, res) {
+
+router.post("/api/recipes/", function (req, res) {
     // hardcoded UserId for now
+    UserId = req.session.userId;
     console.log("req ", req.body);
     var recipe = req.body;
     // create a recipe
@@ -124,13 +105,13 @@ router.post("/api/recipes/:id", function (req, res) {
         recipeProcedure:recipe.RecipeProcedure,
         recipeNotes:recipe.Notes,
         recipeImage: recipe.recipeImage,
-        UserId: parseInt(recipe.UserId),
+        UserId: parseInt(UserId),
     }).then(function (results) //zp from res
     {
         // with the created recipe id, add ingredients
         console.log(results.dataValues);
         // we will pass data into req.body from the scripts.js
-        //loop the ingredients variable to add all the ingredients
+        // loop the ingredients variable to add all the ingredients
         var ingredients = recipe.ingredients.length;
         var count = 0;
 
@@ -163,26 +144,21 @@ router.post("/api/recipes/:id", function (req, res) {
                 res.json(err);
             })
         }
-        // for (var i = 0; i < recipe.ingredients.length; i++) {
-        //     db.Ingredient.create({
-        //         quantity: recipe.ingredients[i].quantity,
-        //         measurement: recipe.ingredients[i].measurement,
-        //         name: recipe.ingredients[i].ingredientName,
-        //         RecipeId: results.dataValues.id //zp from data.id 
-        //     }).then(function (results) //zp from res
-        //     {
-        //         // can only send one response, but can't compile each result as these happen asynchronously
-        //         // so any response outside the db function runs imediately;
-        //         // maybe use recursion and callbacks here?
-        //         // I'm not sure it's important to return anything though
-        //         res.json(results);
-        //     }).catch(function (err) {
-        //         res.json(err);
-        //     })
-        // }
-    })//.catch(function (err) {
-     //   res.json(err);
-   // })
+    })
 });
+
+// GET for logout logout
+router.get('/logout', function (req, res, next) {
+  if (req.session) {
+    // delete session object
+    req.session.destroy(function (err) {
+      if (err) {
+        return next(err);
+      } else {
+        return res.redirect('/');
+      }
+    });
+  }
+});  
 
 module.exports = router;
