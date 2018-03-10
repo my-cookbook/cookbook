@@ -78,7 +78,7 @@ router.post("/uploadimage", function(req,res) {
         if (err)
           return res.status(500).send(err);
      
-        res.json(filename + ext);
+        res.json(pathname);
       });
 });
 
