@@ -58,7 +58,7 @@ typings/
 .env
 
 # ignore all the images
-public/foodimages/*
+public/foodimages/
 
 # exception so the dirctory isn't ignored
 # !public/foodimages/README.md 
