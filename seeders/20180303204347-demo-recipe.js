@@ -34,7 +34,7 @@ module.exports = {
       {
         //3
         recipeTitle: 'Cereal',
-        recipeDescription: 'lucky charms is the best',
+        recipeDescription: 'it is a fast choice not necessary the best ',
         recipeProcedure: '<ul><li>Put the cereal in a bowl</li><li>pour milk on it</li></ul>',
         recipeNotes: "notes",
         UserId: 1,
@@ -43,7 +43,7 @@ module.exports = {
       {
         //4
         recipeTitle: 'scrambled eggs',
-        recipeDescription: '',
+        recipeDescription: 'its healthy, fast and easy',
         recipeProcedure: '<ul><li>You know how to cook eggs, man.</li></ul>',
         recipeNotes: "notes",
         UserId: 1,
